@@ -29,11 +29,11 @@ $_SESSION['view'] = 'truck';
 
       <ul>
         
-        <li><a href='fleet_view.php'>Home<a/></li>
+        <li><a href='/'>Home<a/></li>
 
         <li><a href='#'>Timeline<a/></li>
 
-        <li><a href='#'>Manage Fleet<a/></li>
+        <li><a href='fleet'>Fleet<a/></li>
 
         <li><a href='#'>Mangage Drivers<a/></li>
 

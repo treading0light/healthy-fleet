@@ -118,13 +118,15 @@ async function renderTruck(truck_id) {
 
 async function addTruck() {
 
+  let data = grabData();
+
   let url = "add_new.php"
   let options = {
     method: 'POST',
-    body: JSON.stringify(data)
+    body: 'JSON.stringify(data)'
   };
 
-  let data = grabData();
+  console.log(JSON.stringify(data));
 
   let res = await fetch(url, options)
     .then(res => res.json())

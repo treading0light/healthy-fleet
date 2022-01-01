@@ -28,9 +28,9 @@
 
       <ul>
         
-        <li><a href="#">Home</a></li>
+        <li><a href="/">Home</a></li>
 
-        <li><a href="#">Maintenance Timeline</a></li>
+        <li><a href="fleet">Fleet</a></li>
 
         <li><a href="add_truck">Add to Fleet</a></li>
 
@@ -51,9 +51,9 @@
             <p>Truck Make: <input type="text" id="truck_make" /></p>
             <p>Truck Model: <input type="text" id="truck_model" /></p>
             <br>
-            <p>Current Mileage: <input type="text" id="truck_id" /></p>
+            <p>Current Mileage: <input type="text" id="mileage" /></p>
             <br>
-            <p><input type="submit" onclick="addTruck()"></p>
+            <p id=submit onclick="addTruck()">Submit</p>
         </form>
     </main>
 

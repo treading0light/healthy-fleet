@@ -46,9 +46,10 @@
 
             // build a string containing sql code and add it to $sql variable
             $sql .= "INSERT INTO fleet (id, year, make, model, mileage) VALUES (" . $id . "," . $year . ",'" . $make . "','" . $model . "'," . $mileage .");";
-        }
-        return $sql
-    }  
+        };
+
+        return $sql;
+    }; 
 
     $fleet = getJson();
     $sql = buildQuery($fleet);
