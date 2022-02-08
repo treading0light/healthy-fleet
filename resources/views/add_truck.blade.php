@@ -1,7 +1,3 @@
-<?php 
-	session_start();
-
-?>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Truck</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 </head>
 <body>
 
@@ -43,22 +39,23 @@
     <main>
         <h2>Add a new vehicle to the database</h2>
 
-        <form action="add_new.php" method="post">
+        <form action="/add_truck" method="POST">
+            @csrf
             
-            <p>Truck ID: <input type="text" id="truck_id" /></p>
-            <p>Year: <input type="text" id="truck_year" /></p>
+            <p>Truck Name: <input type="text" id="name" name="name" /></p>
+            <p>Year: <input type="text" id="year" name="year" /></p>
             <br>
-            <p>Truck Make: <input type="text" id="truck_make" /></p>
-            <p>Truck Model: <input type="text" id="truck_model" /></p>
+            <p>Truck Make: <input type="text" id="make" name="make"/></p>
+            <p>Truck Model: <input type="text" id="model" name="model" /></p>
             <br>
-            <p>Current Mileage: <input type="text" id="mileage" /></p>
+            <p>Current Mileage: <input type="text" id="mileage" name="mileage" /></p>
             <br>
-            <p id=submit onclick="addTruck()">Submit</p>
+            <button type=submit class="button">Submit</button>
         </form>
     </main>
 
 
-<script src="external.js"></script>
+<!-- <script src="external.js"></script> -->
 
 
 
