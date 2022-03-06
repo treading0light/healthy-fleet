@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Truck;
 use App\Models\Department;
 use App\Models\User;
+use App\Models\Company;
+use App\Modles\Image;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,31 +21,53 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Department::truncate();
         Truck::truncate();
+        Company::truncate();
         // \App\Models\User::factory(10)->create();
 
-        $dep1 = Department::create([
-            'name' => 'windows'
+        $company1 = Company::create([
+            'name' => 'valentine roofing',
         ]);
 
-        $dep2 = Department::create([
-            'name' => 'gutters'
-        ]);
-
-        $dep3 = Department::create([
-            'name' => 'roofing'
+        $company2 = Company::create([
+            'name' => 'trimark',
         ]);
 
         $user1 = User::create([
             'name' => 'tony',
             'email' => 'something@else.com',
-            'password' => bcrypt('11password')
+            'password' => bcrypt('11password'),
+            'company_id' => $company1->id
         ]);
 
         $user2 = User::create([
             'name' => 'kya',
             'email' => 'kya@email.com',
-            'password' => bcrypt('12password')
+            'password' => bcrypt('12password'),
+            'company_id' => $company2->id
         ]);
+
+        $dep1 = Department::create([
+            'name' => 'windows',
+            'company_id' => 1
+        ]);
+
+        $dep2 = Department::create([
+            'name' => 'gutters',
+            'company_id' => 1
+        ]);
+
+        $dep3 = Department::create([
+            'name' => 'roofing',
+            'company_id' => 1
+        ]);
+
+        $dep4 = Department::create([
+            'name' => 'justice',
+            'company_id' => 2
+        ]);
+
+        
+
 
         // Truck::create([
         //     'name' => 'truck-01',

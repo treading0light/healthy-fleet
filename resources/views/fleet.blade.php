@@ -7,69 +7,74 @@
 
 </head>
 
-<header>
 
-  <div>
-
-    <img id="logo" src="{{ asset('images/hf_logo.jpg'); }}">
-    
-    </div>
-
-  <h2>Fleet View</h2>
-</header>
 
 <body>
-    <nav>
 
-      <ul>
-        
-        <li><a href="/">Home</a></li>
+  @include('layouts.header')
 
-        <li><a href="#">Maintenance Timeline</a></li>
+  @include('layouts.nav')
 
-        <li><a href="add_truck">Add to Fleet</a></li>
+  <main>
 
-        <li><a href="#">Asign Gas Card</a></li>
-
-      </ul>
-      
-    </nav>
-
-  <main class="container">
+    <div id="fleet">
 
     @foreach ($trucks as $truck)
 
-      <div class='truck_block'>
+      <div class="truck_bar">
+        <h1> {{ ucfirst($truck->name) }} </h1>
 
-        <h3>{{ ucfirst($truck->name) }}</h3>
-
-        <img src="{{ asset($truck->main_photo) }} ">
-
-        <div id='redundant'>
-          <div class='truck_table'>
-
-            <table>
-              <tr> <td>Department</td> <td>{{ $truck->department->name }}</td> </tr>
-              <tr> <td>Current mileage:</td> <td>{{ $truck->mileage }}</td> </tr>
-              <tr> <td>Last mileage update</td> <td>11/11/21</td> </tr>
-              <tr> <td>Next service due:</td> <td>600 mi.</td> </tr>
-
-            </table>
-          </div>
-
-          
-          <a class='button' href='/fleet/{{ $truck->name }}'>View</a>
+        <div class="department">
+          <p class="label">Department</p>
+          <p>{{ $truck->department->name }}</p>
         </div>
 
+        <div class="service">
+          <p class="label">Next Service</p>
+          <p>600 mi.</p>
+        </div>
+
+        <div class="button" onclick="viewUnit({{$truck->id}})">
+          <p>View</p>
+        </div>
       </div>
+
       <hr>
+
+      
 
     @endforeach
 
+    </div>
+
+    @foreach ($trucks as $truck)
+    @include('layouts.truck')
+    @endforeach
 
     
-
   </main>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <script>
+    async function viewUnit(id) {
+      document.getElementById('fleet').style.display = 'none';
+      const target = document.getElementById(id);
+      target.style.display = 'grid';
+    }
+
+    async function viewFleet(id) {
+      const target = document.getElementById(id);
+      target.style.display = 'none';
+
+      document.getElementById('fleet').style.display = 'flex';
+    }
+
+    $('.nav_item').on('click', function(){
+      $('.nav_item').removeClass('active_tab');
+      $(this).addClass('active_tab');
+    });
+  </script>
 
 </body>
 </html>

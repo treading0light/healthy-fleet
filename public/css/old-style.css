@@ -1,0 +1,166 @@
+* { margin: 0px; padding: 0px; font-size: 1.1em; }
+main, nav { display: block; }
+
+body {
+  background-color: #bebec4;
+
+}
+
+header {
+  display: flex;
+  height: 100px;
+  background-color: #9f263c;
+}
+
+header h2 {
+  font-size: 2.5em;
+  margin: auto;
+  margin-top: 5px;
+
+}
+
+main {
+  width: 100%;
+  height: 80%;
+  /*overflow: auto;*/
+
+}
+
+nav {
+  width: 100%;
+  background-color: #bebec4;
+  border: black solid 1px;
+  position: static;
+  top: 0;
+  overflow: hidden;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 10px 30px;
+
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-top: 5px;
+}
+
+/*#logo {
+  width: 30%;
+  height: 100%;
+  background-color: dimgray;
+  float: left;
+}*/
+
+h2 {
+  font-size: 1.5em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10px;
+}
+
+hr { width: 85%; margin: auto; }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+img, h3 { padding: 15px; }
+
+#logo {
+  /*width: 18%;*/
+  float: left;
+  margin, padding: 0;
+}
+
+.button {
+color: #ffffff;
+background-color: #9f263c;
+border: 1px solid #000;
+border-radius: 4px;
+padding: 5px 15px;
+cursor: pointer;
+width: 20px;
+height:32px;
+font-size:14px;
+transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+box-shadow: 1px 1px #44131370, 2px 2px #44131370, 3px 3px #44131370;
+transform: translateX(-3px);
+}
+
+
+.truck_block img { width: 300px; float: left;}
+
+.truck_block .button {
+  clear: both;
+}
+
+
+
+.truck_block {
+  width: 70%;
+  /*position: relative;*/
+  margin: auto;
+  margin-top: 30px;
+}
+
+.right { float: right; }
+.left { float: left; }
+
+#redundant {
+  position: relative;
+  float: left;
+  width: 45%;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  /*background-color: rosybrown;*/
+}
+
+.truck_table {
+  float: left;
+  /*background-color: burlywood;*/
+  font-size: .7em;
+  text-transform: capitalize;
+
+}
+
+.truck_bio {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  text-transform: capitalize;
+
+}
+
+.truck_bio img {
+  /*float: left;*/
+}
+
+#bio_table {
+  float: right;
+}
+
+@media screen and (max-width: 870px) {
+  /*#redundant { clear: both; }*/
+  .truck_table, #bio_table { font-size: .6em;}
+  .truck_block img, #bio_table img { width: 150px; }
+}
+
+@media screen and (max-width: 700px) {
+  .truck_table { display: none; }
+  
+  .truck_block table { width: 1.5em; }
+}
+
+

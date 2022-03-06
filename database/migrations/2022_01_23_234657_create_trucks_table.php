@@ -22,7 +22,7 @@ class CreateTrucksTable extends Migration
             $table->integer('mileage')->nullable()->length(7);
             $table->string('main_photo')->nullable();
             $table->foreignId('department_id')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('company_id');
             $table->timestamps();
         });
     }    

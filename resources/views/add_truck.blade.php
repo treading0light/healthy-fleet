@@ -9,37 +9,14 @@
 </head>
 <body>
 
-    <header>
+    @include(layouts.header)
 
-        <div>
-
-        <img id="logo" src="valentine_logo.jpg">
-    
-        </div>
-
-        <h2>Fleet View</h2>
-    </header>
-
-    <nav>
-
-      <ul>
-        
-        <li><a href="/">Home</a></li>
-
-        <li><a href="fleet">Fleet</a></li>
-
-        <li><a href="add_truck">Add to Fleet</a></li>
-
-        <li><a href="#">Asign Gas Card</a></li>
-
-      </ul>
-      
-    </nav>
+    @include(layouts.nav)
 
     <main>
         <h2>Add a new vehicle to the database</h2>
 
-        <form action="/add_truck" method="POST">
+        <form action="/add_truck" method="POST" enctype="multipart/form-data" >
             @csrf
             
             <p>Truck Name: <input type="text" id="name" name="name" /></p>
@@ -50,7 +27,17 @@
             <br>
             <p>Current Mileage: <input type="text" id="mileage" name="mileage" /></p>
             <br>
-            <button type=submit class="button">Submit</button>
+            <select name="department_id" id="department_id">
+                @foreach ($departments as $department)
+
+                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                @endforeach
+            </select>
+            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*" />
+
+            <button type="submit" class="button">Submit</button>
         </form>
     </main>
 

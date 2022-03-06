@@ -16,9 +16,14 @@ class Truck extends Model
         return $this->belongsTo(Department::class, 'department_id');
     }
 
-    public function user() {
+    public function company() {
 
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function images() {
+        
+        return $this->hasMany(Image::class);
     }
 
 }

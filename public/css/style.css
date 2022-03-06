@@ -1,65 +1,57 @@
 * { margin: 0px; padding: 0px; font-size: 1.1em; }
 main, nav { display: block; }
 
-body {
-  background-color: #bebec4;
+body { background-color: #bebec4; }
 
-}
-
-header {
+#header_flex {
+  width: 100%;
   display: flex;
   height: 100px;
-  background-color: #9f263c;
+  /*justify-content: flex-end;*/
+  /*background-color: #bebec4;*/
 }
 
-header h2 {
-  font-size: 2.5em;
-  margin: auto;
-  margin-top: 5px;
+#user_settings {
+  justify-self: flex-end;
+}
 
+#logo {
+  /*width: 30%;*/
+  /*height: 100%;*/
+  justify-self: flex-start;
 }
 
 main {
   width: 100%;
   height: 80%;
   /*overflow: auto;*/
-
 }
 
 nav {
   width: 100%;
   background-color: #bebec4;
-  border: black solid 1px;
-  position: static;
-  top: 0;
-  overflow: hidden;
+
+  /*none|h-offset v-offset blur spread color |inset|initial|inherit*/
+  box-shadow: 0 5px 5px -5px ;
 }
 
 nav ul {
+  width: 70%;
+  margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-nav li {
-  margin: 10px 30px;
-
+.active_tab {
+  /*border-bottom: solid 4px #1e6070;*/
+  box-shadow: 0 8px 3px -5px #1e6070;
 }
-
-header h1 {
-  font-size: 2.5em;
-  margin-top: 5px;
-}
-
-/*#logo {
-  width: 30%;
-  height: 100%;
-  background-color: dimgray;
-  float: left;
-}*/
 
 h2 {
   font-size: 1.5em;
 }
+
+h5 { font-size: 1em; }
 
 ul {
   list-style-type: none;
@@ -75,92 +67,96 @@ a {
 
 img, h3 { padding: 15px; }
 
-#logo {
-  /*width: 18%;*/
-  float: left;
-  margin, padding: 0;
-}
 
 .button {
 color: #ffffff;
-background-color: #9f263c;
+background-color: #1e6070;
 border: 1px solid #000;
 border-radius: 4px;
 padding: 5px 15px;
 cursor: pointer;
-width: 20px;
-height:32px;
-font-size:14px;
+max-height: 40px;
+/*height:32px;*/
+font-size:1em;
+text-align: center;
 transition: all 0.2s ease-in-out;
 }
 .button:hover {
-box-shadow: 1px 1px #44131370, 2px 2px #44131370, 3px 3px #44131370;
+box-shadow: 1px 1px #12323c, 2px 2px #12323c, 3px 3px #12323c;
 transform: translateX(-3px);
 }
 
-
-.truck_block img { width: 300px; float: left;}
-
-.truck_block .button {
-  clear: both;
-
+.button p {
 }
+
+#fleet {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.truck_bar {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.truck_bar .button {
+  width: 10%;
+}
+
+.label { font-weight: bold; }
+
+/*UNIT VIEW*/
 
 
 
 .truck_block {
+  display: none;
+  text-transform: capitalize;
   width: 70%;
-  /*position: relative;*/
-  margin: auto;
-  margin-top: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: .25fr 1fr .25fr .25fr;
 }
 
-.right { float: right; }
-.left { float: left; }
+/*.truck_block img { width: 80%; }*/
 
-#redundant {
-  position: relative;
-  float: left;
-  width: 45%;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  /*background-color: rosybrown;*/
+
+.truck_name { 
+grid-column: 1 / 2;
+grid-row: 1 / 2;
+}
+
+.truck_img {
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
+  justify-self: stretch;
+  max-width: 90%;
+}
+.truck_btn {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+  justify-self: center;
+  align-self: center;
 }
 
 .truck_table {
-  float: left;
-  /*background-color: burlywood;*/
-  font-size: .7em;
-  text-transform: capitalize;
+
+ /* background-color: #7c7c7e;
+  border-radius: 8px;
+  padding: 8px;*/
+
+  grid-column: 3 / 5;
+  grid-row: 2 / 3;
+  height: 50%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: start;
+  gap: 10px 30px;
 
 }
-
-.truck_bio {
-  display: flex;
-  width: 80%;
-  margin: auto;
-  text-transform: capitalize;
-
-}
-
-.truck_bio img {
-  /*float: left;*/
-}
-
-#bio_table {
-  float: right;
-}
-
-@media screen and (max-width: 870px) {
-  /*#redundant { clear: both; }*/
-  .truck_table, #bio_table { font-size: .6em;}
-  .truck_block img, #bio_table img { width: 150px; }
-}
-
-@media screen and (max-width: 700px) {
-  .truck_table { display: none; }
-  
-  .truck_block table { width: 1.5em; }
-}
-
-
