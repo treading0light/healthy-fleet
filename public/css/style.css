@@ -115,7 +115,7 @@ transform: translateX(-3px);
 
 
 .truck_block {
-  display: none;
+  display: grid;
   text-transform: capitalize;
   width: 70%;
   grid-template-columns: repeat(4, 1fr);

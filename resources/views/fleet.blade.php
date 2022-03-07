@@ -5,6 +5,9 @@
   <title>Fleet View</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
 </head>
 
 
@@ -34,8 +37,8 @@
           <p>600 mi.</p>
         </div>
 
-        <div class="button" onclick="viewUnit({{$truck->id}})">
-          <p>View</p>
+        <div class="button">
+          <a href="/fleet/{{ $truck->name }}">View</a>
         </div>
       </div>
 
@@ -47,33 +50,27 @@
 
     </div>
 
-    @foreach ($trucks as $truck)
-    @include('layouts.truck')
-    @endforeach
-
     
   </main>
 
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
   <script>
-    async function viewUnit(id) {
-      document.getElementById('fleet').style.display = 'none';
-      const target = document.getElementById(id);
-      target.style.display = 'grid';
-    }
+    // async function viewUnit(id) {
+    //   document.getElementById('fleet').style.display = 'none';
+    //   const target = document.getElementById(id);
+    //   target.style.display = 'grid';
+    // }
 
-    async function viewFleet(id) {
-      const target = document.getElementById(id);
-      target.style.display = 'none';
+    // async function viewFleet(id) {
+    //   const target = document.getElementById(id);
+    //   target.style.display = 'none';
 
-      document.getElementById('fleet').style.display = 'flex';
-    }
+    //   document.getElementById('fleet').style.display = 'flex';
+    // }
 
-    $('.nav_item').on('click', function(){
-      $('.nav_item').removeClass('active_tab');
-      $(this).addClass('active_tab');
-    });
+    // $('.nav_item').on('click', function(){
+    //   $('.nav_item').removeClass('active_tab');
+    //   $(this).addClass('active_tab');
+    // });
   </script>
 
 </body>
