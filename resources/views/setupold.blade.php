@@ -12,13 +12,8 @@
 
 <body class="flex-col">
 	<main class="flex-col" id="main">
-		@if($errors->any())
-	    {!! implode('', $errors->all('<div>:message</div>')) !!}
-		@endif
+		<div id="opening">
 
-		<form id="setup" method="POST" action="{{ url('/setup') }}" enctype="multipart/form-data">
-			@csrf
-			
 			<div id="intro" class="flex-col">
 
 				<h1>Before we set up your fleet, <br> please answer the following questions</h1>
@@ -31,7 +26,7 @@
 				<h1>What is the name of your company?</h1>
 				<p>Or you can just enter your first name</p>
 
-				<input type="text" name="company_name" id="company_name">
+				<input type="text" name="company-name">
 
 				<div class="button continue">Continue</div>
 
@@ -40,44 +35,45 @@
 			<div id="choose-dep" class="flex-col off">
 				<h1>Would you like to organize your fleet by department?</h1>
 
-				
-				<div id="question" class="flex-row">
-					<div class="button yes">Yes</div>
-					<div class="button no">No</div>
-				</div>
+				<form id="question" class="flex-col">
+					<div>
+						<h1>Yes</h1>
+						<input id="yes" type="radio" name="dep-choice" value="yes">
+					</div>
 
-				<div id="department" class="gridx2 off">
+					<div>
+						<input id="no" type="radio" name="dep-choice" value="no">
+						<label for="no">no</label>
 
-					@for ($i = 0; $i < 10; $i++)
+					</div>
+				</form>
 
-					<h2>Department Name</h2>
-					<input class="department-name" type="text" name="department_name[{{$i}}]">
+				<form id="department" class="flex-col off">
+					<input class="department-name" type="text" name="department-name">
 
-					@endfor
-					
-				</div>
+					<div class="button add-more">Add more</div>
+
+				</form>	
 					
 				<div class="button continue">Continue</div>
-
-			</div>
-
-			<div id="part-1-fin" class="flex-col off">
-				<h1>That's it for part 1 of the setup. <br> Submit to continue</h1>
-
-				<button type="submit" class="button submit">Submit</button>
 				
 			</div>
-				
-		</form>
+
+			<div id="choose-number" class="flex-col off">
+				<h1>How many vehicles would you like to add right now?</h1>
+				<h2>You can always add more later.</h2>
+				<input type="number" name="number" id="number">
+				<div class="button submit">Submit</div>
+
+				<h1 class="message"></h1>
+
+			</div>
+		</div>
 
 
 	</main>
 
 	<script src="{{ asset('js/setup.js') }}"></script>
-
-	<script>
-		console.log("{{ url('/setup/') }}")
-	</script>
 
 </body>
 </html>

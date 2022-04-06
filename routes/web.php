@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Company;
 use App\Http\Controllers\AddTruckController;
 use App\Http\Controllers\AddImageController;
+use App\Http\Controllers\SetupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\AddImageController;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,7 +32,10 @@ Route::get('/home', function () {
 
 Route::get('/fleet', function () {
     return view('fleet',[
-        'trucks' => Truck::oldest('name')->with('department')->get()
+        'trucks' => Truck::oldest('name')
+        ->where('company_id', '=', Auth::user()->company_id)
+        ->with('department')
+        ->get()
     ]);
 })->middleware(['auth']);
 
@@ -65,5 +70,12 @@ Route::get('/dashboard', function () {
 Route::get('/setup', function() {
     return view('setup');
 });
+
+Route::post('/setup', [SetupController::class, 'storeSetup'
+])->middleware(['auth']);
+
+Route::get('/setup/truck', [SetupController::class, 'getTruckForm'])->middleware(['auth'])->name('setup_truck');
+
+Route::post('/setup/truck', [SetupController::class, 'storeTruck']);
 
 require __DIR__.'/auth.php';

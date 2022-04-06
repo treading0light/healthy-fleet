@@ -14,16 +14,29 @@ class AddTruckController extends Controller
         // dd($request->file('img'));
 
         $attributes = $request->validate([
-            'name' => ['required', 'max:25'],
-            'year' => 'max:4',
-            'make' => 'max:20',
-            'model' => 'max:20',
-            'mileage' => 'max:7',
+            'name' => ['required', 'max:25', Rule::unique('trucks')->where(fn ($query) => $query->where('company_id', Auth::user()->company_id))],
+            'year' => ['max:4', 'nullable'],
+            'make' => ['max:20', 'nullable'],
+            'model' => ['max:20', 'nullable'],
+            'mileage' => ['max:7', 'nullable'],
             'department_id' => '',
             // 'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        
+        $attributes['company_id'] = Auth::user()->company_id;
+     
+        $newTruck = Truck::create($attributes);
 
-        // dd(Auth::user()->company->name);
+        if ($request->file('img')) {
+            addMainPhoto($request, $newTruck);
+        };
+
+        return redirect('/fleet');
+        // return $attributes;
+        // dd($attributes);
+    }
+
+    public function addMainPhoto(Request $request, $newTruck) {
 
         $imageName = time().'.'.$request->file('img')->getClientOriginalName();
 
@@ -31,19 +44,13 @@ class AddTruckController extends Controller
 
         $path = 'images/'.$companyFolder.'/';
 
-        $attributes['company_id'] = Auth::user()->company_id;
-        $attributes['main_photo'] = $path.$imageName;
-     
         $request->file('img')->move($path, $imageName);
 
-        $newTruck = Truck::create($attributes);
-        Image::create([
+        $image = Image::create([
             'url' => $path.$imageName,
             'truck_id' => $newTruck->id,
         ]);
 
-        return redirect('/fleet');
-        // return $attributes;
-        // dd($attributes);
+        $newTruck->update(['main_photo' => $image->url]);
     }
 }

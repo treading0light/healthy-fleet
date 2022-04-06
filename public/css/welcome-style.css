@@ -10,7 +10,7 @@ main {
   gap: 40px;
   width: 100%;
   /*background-color: #919293;*/
-  background: linear-gradient(#919293, #);
+  background: linear-gradient(#bebec4, #919293);
   min-height: 1000px;
 }
 

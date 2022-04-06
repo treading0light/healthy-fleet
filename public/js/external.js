@@ -1,3 +1,6 @@
+// Originally I used JS to do much of what I let laravel do now.
+// This is that JS
+
 async function fetchFleet() {
   // fetch data from php and convert to json
 

@@ -1,22 +1,48 @@
 * { margin: 0px; padding: 0px; font-size: 1.1em; }
-main, nav { display: block; }
 
 body { background-color: #bebec4; }
+
+.flex-col {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: safe center;
+  align-items: center;
+  gap: 10px;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: safe center;
+  align-items: center;
+  gap: 10px;
+}
 
 #header_flex {
   width: 100%;
   display: flex;
   height: 100px;
-  /*justify-content: flex-end;*/
-  /*background-color: #bebec4;*/
 }
 
-#user_settings {
+#user_menu {
   justify-self: flex-end;
+  align-self: center;
+  margin-right: 20px;
 }
 
-#logo {
-  /*width: 30%;*/
+#user_menu li {
+  display: block;
+  position: relative;
+  top: 0;
+}
+
+.off {
+  display: none;
+}
+
+
+#logo img {
+  width: 18%;
   /*height: 100%;*/
   justify-self: flex-start;
 }
@@ -39,7 +65,8 @@ nav ul {
   width: 70%;
   margin: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 5vw;
 }
 
 .active_tab {
@@ -106,6 +133,14 @@ transform: translateX(-3px);
 
 .truck_bar .button {
   width: 10%;
+}
+
+.name-pic {
+  width: fit-content;
+}
+
+.name-pic img {
+  width: 15vw;
 }
 
 .label { font-weight: bold; }

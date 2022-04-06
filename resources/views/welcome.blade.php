@@ -11,7 +11,7 @@
 
         <h1>Welcome to</h1>
 
-        <img src="{{ asset('images/hf_logo.jpg') }}">
+        <img src="{{ asset('images/healthy-fleet-logo.png') }}">
 
         <div class="welcome-buttons">
             <div class="button">
