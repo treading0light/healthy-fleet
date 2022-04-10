@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/welcome-style.css') }}">
 </head>
 <body>
     <main>
