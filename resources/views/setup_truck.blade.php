@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Add Vehicle</title>
 
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/setup.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ secure_asset('css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ secure_asset('css/setup.css') }}">
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
