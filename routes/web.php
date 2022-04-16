@@ -67,9 +67,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/setup', function() {
-    return view('setup');
-});
+Route::get('/setup', [SetupController::class, 'getSetup'
+])->middleware(['auth']);
 
 Route::post('/setup', [SetupController::class, 'storeSetup'
 ])->middleware(['auth']);

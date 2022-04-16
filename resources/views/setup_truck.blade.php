@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	@include('layouts.setup_head')
+
 	<title>Add Vehicle</title>
-
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/setup.css') }}">
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 
@@ -44,12 +39,16 @@
 
 	            <h3>Current Mileage: <input type="text" id="mileage" name="mileage" /></h3>	
 
+	            @if ($departments != '')
+	            
 	            <h3>Department: <select name="department_id" id="department_id">
 	                @foreach ($departments as $department)
 
 	                <option value="{{ $department->id }}">{{ $department->name }}</option>
 	                @endforeach
 	            </select></h3>
+
+	            @endif
 
 	            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
 	            <h3>Upload Vehicle Photo: <input type="file" id="img" name="img" accept="image/*" /></h3>

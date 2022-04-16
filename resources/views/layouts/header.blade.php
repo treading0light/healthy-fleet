@@ -4,20 +4,26 @@
 	</div>
 
 	<div id="user_menu" class="flex-col">
-		<h1>Hello {{ Auth::user()->name }}</h1>
+		<h1 id="user">Hello {{ Auth::user()->name }}</h1>
 		<ul id="menu_content" class="flex-col off">
-			<li><a id="logout">logout</a></li>
+			<li><form id="logout-form" action="{{ route('logout') }}" method="POST">
+
+			@csrf
+			<button class="button" type="submit">Logout</button>
+
+			</form></li>
 		</ul>
+		
+
 	</div>
 
 	<script>
-		$('#user_menu').on('click', function() {
-			$(this).children('ul').toggleClass('off')
+		$('#user').on('click', function() {
+			$(this).siblings('ul').toggleClass('off')
 		})
 
-		$('#logout').on('click' function() {
-			// fetch("{{ url('/logout') }}")
-			console.log('fart')
+		$('#logout').on('click', function(e) {
+			$(this).parent('#logout-form').submit()
 		})
 	</script>
 </header>

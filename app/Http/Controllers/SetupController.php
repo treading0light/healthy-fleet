@@ -93,6 +93,16 @@ class setupController extends Controller {
         };
     }
 
+    public function getSetup() {
+
+        if (Auth::user()->company) {
+            return redirect('/setup/truck');
+        } else {
+            return view('setup');
+        }
+    }
+    
+
     public function storeSetup(Request $request) {
         // set company name and define department names
 
@@ -115,7 +125,10 @@ class setupController extends Controller {
 
         foreach ($attributes['department_name'] as $name) {
             if (is_null($name)) {
-                continue;
+                Department::create([
+                'name' => 'None',
+                'company_id' => $company->id,
+                ]);
             } else {
                 Department::create([
                 'name' => $name,

@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  @include('layouts.head')
   <title>Fleet View</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-
+ 
 </head>
 
 

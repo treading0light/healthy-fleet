@@ -22,9 +22,17 @@ $('#main').find('.continue').on('click', function() {
   $(this).parent().next().removeClass('off')
 })
 
-
-$('#number').on('change', 'input', function() {
-  let number = $(this).val()
+// prevent form submit on keypress 'enter'
+$('#setup input').on('keydown', function(e) {
+  if (e.keyCode == 13) {
+    e.preventDefault()
+    if ($(this).next('.continue').length) {
+      $(this).next('.continue').trigger('click')
+    } else {
+      $(this).parent().siblings('.continue').trigger('click')
+    }
+    
+  }
 })
 
 // show option to add departments

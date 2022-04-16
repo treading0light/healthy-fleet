@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	@include('layouts.setup_head')
+	
 	<title>Setup</title>
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/setup.css') }}">
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
 </head>
 
 <body class="flex-col">

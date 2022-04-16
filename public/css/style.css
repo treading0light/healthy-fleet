@@ -28,6 +28,7 @@ body { background-color: #bebec4; }
   justify-self: flex-end;
   align-self: center;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 #user_menu li {
@@ -113,7 +114,8 @@ box-shadow: 1px 1px #12323c, 2px 2px #12323c, 3px 3px #12323c;
 transform: translateX(-3px);
 }
 
-.button p {
+.button a {
+  color: #ffffff;
 }
 
 #fleet {
