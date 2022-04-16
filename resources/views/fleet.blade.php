@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Fleet View</title>
-  <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
