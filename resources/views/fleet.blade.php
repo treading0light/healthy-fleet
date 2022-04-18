@@ -28,7 +28,11 @@
 
         <div class="department">
           <p class="label">Department</p>
+          @if (isset($truck->department))
           <p>{{ $truck->department->name }}</p>
+          @else
+          <p>None</p>
+          @endif
         </div>
 
         <div class="service">

@@ -109,7 +109,7 @@ class setupController extends Controller {
         // validate request
         try {
             $attributes = $request->validate([
-                    'company_name' => ['required', 'max:50', 'unique:companies,name'],
+                    'company_name' => ['required', 'max:50'],
                     'department_name' => ['max:25', 'nullable']
             ]);
         } catch (exception $e) {
@@ -124,17 +124,13 @@ class setupController extends Controller {
         // create new department if single string or array
 
         foreach ($attributes['department_name'] as $name) {
-            if (is_null($name)) {
-                Department::create([
-                'name' => 'None',
-                'company_id' => $company->id,
-                ]);
-            } else {
+            if ($name != '' && $name != null) {
                 Department::create([
                 'name' => $name,
                 'company_id' => $company->id,
                 ]);
-            };        
+            }
+            
         };
 
         // assign company id to user

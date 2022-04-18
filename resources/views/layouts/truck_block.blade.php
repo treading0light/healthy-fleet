@@ -5,7 +5,10 @@
 
         <div class="truck_table">
 
-        <h5>Department</h5> <h5>{{ $truck->department->name }}</h5> 
+        @if (isset($truck->department))
+        <h5>Department</h5> <h5>{{ $truck->department->name }}</h5>
+        @endif
+        
         <h5>Current mileage:</h5> <h5>{{ $truck->mileage }}</h5> 
         <h5>Last mileage update</h5> <h5>11/11/21</h5> 
         <h5>Next service due:</h5> <h5>600 mi.</h5> 

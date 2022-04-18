@@ -44,4 +44,8 @@ $('#question').children('.button.no').on('click', function() {
   $('#department').addClass('off')
 })
 
-
+// Hide messages and errors when an input field gains focus
+$('#setup').children('input').on('focus', function() {
+  $('#error').addClass('off')
+  $('#message').addClass('off')
+})

@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Http\Controllers\AddTruckController;
 use App\Http\Controllers\AddImageController;
 use App\Http\Controllers\SetupController;
+use App\Http\Controllers\FleetViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::get('/fleet', function () {
         ->get()
     ]);
 })->middleware(['auth']);
+
+// Route::get('/fleet/{slug?}', [FleetViewController::class, 'render'])->middleware(['auth']);
 
 Route::get('/fleet/{truck:name}', function (Truck $truck) {
     return view('truck', [

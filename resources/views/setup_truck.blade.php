@@ -12,19 +12,21 @@
     @include('layouts.nav')
 
 	<main class="flex-col" id="main">
-		
-		<h1 id="message"></h1>
 
 
 		<div id="form_container" class="flex-col">
-
+			<div id="error">
 			@if($errors->any())
-		    {!! implode('', $errors->all('<div id="error">:message</div>')) !!}
+		    {!! implode('', $errors->all(':message')) !!}
 			@endif
+			</div>
 
+
+			<div id="message">
 			@if(isset($_SESSION['message']))
-			<div>{!! $_SESSION['message'] !!}</div>
+			{!! $_SESSION['message'] !!}
 			@endif
+			</div>
 
 			<form id="truck_form" action="/setup/truck" method="POST" enctype="multipart/form-data" >
 	            @csrf
