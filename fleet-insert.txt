@@ -19,6 +19,3 @@ INSERT INTO `trucks` (`id`, `name`, `year`, `make`, `model`, `mileage`, `main_ph
 (18, 'truck-10', 2002, 'chevy', '1500', 99597, NULL, 1, 2, NULL, NULL),
 (19, 'truck-11', 2007, 'ford', 'f350', 122889, NULL, 1, 1, NULL, NULL),
 (20, 'truck-19', 1999, 'ford', 'E350', 110632, NULL, 1, 1, NULL, NULL);
-
-Don'f forget!! Try to use js fetch to request layout components from laravel and load them into the main box area, removing the one blade
-view and replacing with another. When a truck is selected from the fleet page, try making the old view element blurry rather than display:none

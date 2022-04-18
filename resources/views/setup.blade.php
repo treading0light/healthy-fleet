@@ -45,9 +45,9 @@
 
 				<div id="department" class="gridx2 off">
 
-					@for ($i = 0; $i < 10; $i++)
+					@for ($i = 0; $i < 5; $i++)
 
-					<h2>Department Name</h2>
+					<p class="department-label">Department Name</p>
 					<input class="department-name" type="text" name="department_name[{{$i}}]">
 
 					@endfor

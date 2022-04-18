@@ -59,7 +59,7 @@
 	        </form>
         </div>
 
-        <button id="done" class="button">Done</button>
+        <button id="done" class="button"><a href="{{ url('/fleet') }}">Done</a></button>
 	</main>
 
 	<script src="{{ asset('js/setup.js') }}"></script>

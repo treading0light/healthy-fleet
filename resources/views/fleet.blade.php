@@ -22,7 +22,7 @@
 
       <div class="truck_bar">
         <div class="name-pic">
-          <h1>{{ ucfirst($truck->name) }}</h1>
+          <p class="label">{{ ucfirst($truck->name) }}</p>
           <img src="{{ asset($truck->main_photo) }}">
         </div>
 

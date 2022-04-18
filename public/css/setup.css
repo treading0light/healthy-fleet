@@ -12,9 +12,6 @@ main {
   margin: auto;
 }
 
-#intro {
-}
-
 .flex-col {
   display: flex;
   flex-flow: column nowrap;
@@ -34,7 +31,7 @@ main {
 .gridx2 {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   grid-row-gap: 5px;
   align-items: center;
   justify-content: center;
@@ -42,9 +39,6 @@ main {
 
 .off {
   display: none;
-}
-
-.submit {
 }
 
 .button {
@@ -63,4 +57,28 @@ transition: all 0.2s ease-in-out;
 .button:hover {
 box-shadow: 1px 1px #12323c, 2px 2px #12323c, 3px 3px #12323c;
 transform: translateX(-3px);
+}
+
+
+
+@media only screen and (max-width: 530px) {
+  main {
+    box-shadow: none;
+  }
+
+  main > * {
+    max-width: 80%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #department > input {
+    width: 50%;
+  }
+
+  .department-label {
+  justify-self: end;
+  grid-column-gap: 10px;
+}
+
 }
