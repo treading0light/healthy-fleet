@@ -20,7 +20,12 @@
 
     @foreach ($trucks as $truck)
 
+      @if (isset($truck->department))
+      <div class="truck_bar  {{ $truck->department->name }}">
+      @else
       <div class="truck_bar">
+      @endif
+
         <div class="name-pic">
           <p class="label">{{ ucfirst($truck->name) }}</p>
           <img src="{{ asset($truck->main_photo) }}">
@@ -41,7 +46,7 @@
         </div>
 
         <div class="button">
-          <a href="/fleet/{{ $truck->name }}">View</a>
+          <a href="/fleet/{{ $truck->id }}">View</a>
         </div>
       </div>
 

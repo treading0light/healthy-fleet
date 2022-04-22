@@ -6,21 +6,28 @@ use Illuminate\Http\Request;
 use App\Models\Truck;
 use App\Models\User;
 use App\Models\Company;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 
 class FleetViewController extends Controller
 {
-    public function render($slug=null) {
+    public function render($truckId=null) {
 
-        if ($slug) {
-            dd($slug);
+        if ($truckId) {
 
-            return view('truck', [
-            'truck' => Truck::where('name', '=', $slug)
-            ->where('company_id', '=', Auth::user()->company_id)
-            ->with('department')
-            ->get(),
-            ]);
+            $truck = Truck::find($truckId);
+            // dd($truck);
+
+            if ($truck->company_id == Auth::user()->company_id) {
+                // dd($truck);
+              return view('truck', [
+                'truck' => $truck,
+                ]);  
+            } else {
+                abort(403);
+            }
+
+            
 
         } else {
 

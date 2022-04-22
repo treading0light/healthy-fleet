@@ -102,6 +102,7 @@ background-color: #1e6070;
 border: 1px solid #000;
 border-radius: 4px;
 padding: 5px 15px;
+width: fit-content;
 cursor: pointer;
 max-height: 40px;
 /*height:32px;*/
@@ -159,8 +160,6 @@ transform: translateX(-3px);
   grid-template-rows: .25fr 1fr .25fr .25fr;
 }
 
-/*.truck_block img { width: 80%; }*/
-
 
 .truck_name { 
 grid-column: 1 / 2;
@@ -182,10 +181,6 @@ grid-row: 1 / 2;
 
 .truck_table {
 
- /* background-color: #7c7c7e;
-  border-radius: 8px;
-  padding: 8px;*/
-
   grid-column: 3 / 5;
   grid-row: 2 / 3;
   height: 50%;
@@ -196,6 +191,28 @@ grid-row: 1 / 2;
   justify-items: start;
   gap: 10px 30px;
 }
+
+/*#service-bar {
+  width: 100%;
+}*/
+
+#service-bar:first-child {
+  justify-self: start;
+}
+
+#service-bar:last-child {
+  justify-self: end;
+}
+
+.service-card {
+  justify-content: space-between;
+}
+
+#doodle {
+  justify-self: flex-start;
+}
+
+
 
 @media only screen and (max-width: 900px) {
   #logo img {

@@ -31,30 +31,7 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth']);
 
-Route::get('/fleet', function () {
-    return view('fleet',[
-        'trucks' => Truck::oldest('name')
-        ->where('company_id', '=', Auth::user()->company_id)
-        ->with('department')
-        ->get()
-    ]);
-})->middleware(['auth']);
-
-// Route::get('/fleet/{slug?}', [FleetViewController::class, 'render'])->middleware(['auth']);
-
-Route::get('/fleet/{truck:name}', function (Truck $truck) {
-    return view('truck', [
-        'truck' => $truck,
-    ]);
-})->middleware(['auth']);
-
-Route::get('/add_truck', function () {
-    return view('add_truck', [
-        'departments' => Company::find(Auth::user()->company_id)->departments
-    ]);
-})->middleware(['auth']);
-
-Route::post('/add_truck', [AddTruckController::class, 'store'])->middleware(['auth']);
+Route::get('/fleet/{truckId?}', [FleetViewController::class, 'render'])->middleware(['auth']);
 
 Route::get('/add_images/{truck:name}', function (Truck $truck) {
     return view('add_images', [
@@ -65,10 +42,6 @@ Route::get('/add_images/{truck:name}', function (Truck $truck) {
 
 Route::post('/add_images/{truck:name}', [AddImageController::class, 'imageUploadPost'
 ])->name('add.images.post')->middleware(['auth']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::get('/setup', [SetupController::class, 'getSetup'
 ])->middleware(['auth']);
