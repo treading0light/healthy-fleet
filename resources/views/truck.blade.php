@@ -10,12 +10,14 @@
 
 <body>
 
-	<main>
+	<main id="truck-main">
 
 		@include('layouts.header')
 		@include('layouts.nav')
 
 		@include('layouts.truck_block')
+
+		<hr>
 
 		<div id="service-bar" class="flex-row">
 			<h2 id="doodle">Services:</h2>
@@ -34,36 +36,33 @@
 			</div>
 		</div>
 			
-		<div id="service-tray">
-			<div class="flex-row service-card">
-				<p>Name:</p>
-				<p>Due in:</p>
-				
-			</div>
 		@if ($truck->services)
+
+		<table id="service-table">
+			<tr>
+				<th>Name:</th>
+				<th>Due in:</th>
+			</tr>
 			@foreach ($truck->services as $service)
 
 				@if ($service->status = 'open')
-				<div class="service-card flex-row open">
-					<h3>{{ $service->name }}</h3> 
-					<h3>{{ $service->mileage_due - $truck->mileage}} miles</h3>
-					<div class="button">
-						<a href="#">View/Edit</a>
-					</div>
-				</div>
+				<tr class="open">
+					<td>{{ $service->name }}</td>
+					<td>{{ $service->mileage_due - $truck->mileage}} miles</td>
+					<td><div class="button">View/Edit</div></td>
+				</tr>
+
 				@else
-				<div class="service-card flex-row closed">
-
-				</div>
+				<tr class="closed">
+					<td>{{ $service->name }}</td>
+					<td>{{ $service->mileage_due - $truck->mileage}} miles</td>
+				</tr>
 				@endif
-
-			
-				
-
-			
 			@endforeach
+
+		</table>
+
 		@endif
-		</div>
 
 	</main>
 

@@ -16,7 +16,7 @@
 
   <main>
 
-    <div id="fleet">
+    <div id="fleet" class="flex-col">
 
     @foreach ($trucks as $truck)
 
