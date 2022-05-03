@@ -12,22 +12,6 @@
 
         </div>
         
-
-        <!-- <div class="truck_table">
-
-        @if (isset($truck->department_id))
-        <h5>Department</h5> <h5>{{ $truck->department->name }}</h5>
-        @endif
-        
-        <h5>Current mileage:</h5> <h5>{{ $truck->mileage }}</h5> 
-        <h5>Last mileage update</h5> <h5>11/11/21</h5> 
-        <h5>Next service due:</h5> <h5>600 mi.</h5> 
-        <h5>Make/Model:</h5> <h5>{{ $truck->make }}/{{ $truck->model }}</h5>
-        <h5>Year:</h5> <h5>{{ $truck->year }}</h5>
-
-        
-
-        </div> -->
         <table class="truck_table">
 
             @if (isset($truck->department_id))
