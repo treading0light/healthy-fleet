@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="button">
-				<a href="services/{{ $truck->id }}">Add new service</a>
+				<a href="{{ url('create_service') }}/{{ $truck->id }}">Add new service</a>
 			</div>
 		</div>
 			

@@ -17,11 +17,12 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('frequency')->default('once');
+            $table->integer('mileage_repeat')->nullable();
             $table->integer('mileage_due');
             $table->string('status')->default('open');
             $table->foreignId('truck_id');
             $table->foreignId('company_id');
-            $table->text('notes')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

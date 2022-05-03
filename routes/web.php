@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Company;
 use App\Http\Controllers\AddTruckController;
 use App\Http\Controllers\AddImageController;
+use App\Http\Controllers\AddServiceController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FleetViewController;
 
@@ -31,7 +32,8 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth']);
 
-Route::get('/fleet/{truckId?}', [FleetViewController::class, 'render'])->middleware(['auth']);
+Route::get('/fleet/{truckId?}', [FleetViewController::class, 'render'])->middleware(['auth'])
+->name('fleet');
 
 Route::get('/add_images/{truck:name}', function (Truck $truck) {
     return view('add_images', [
@@ -52,5 +54,10 @@ Route::post('/setup', [SetupController::class, 'storeSetup'
 Route::get('/setup/truck', [SetupController::class, 'getTruckForm'])->middleware(['auth'])->name('setup_truck');
 
 Route::post('/setup/truck', [SetupController::class, 'storeTruck']);
+
+Route::get('/create_service/{truck}', [AddServiceController::class, 'getServiceForm']
+)->middleware(['auth'])->name('create_service');
+
+Route::post('/create_service', [AddServiceController::class, 'storeService'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

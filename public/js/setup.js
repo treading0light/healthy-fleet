@@ -50,3 +50,7 @@ $('#setup').children('input').on('focus', function() {
   $('#error').addClass('off')
   $('#message').addClass('off')
 })
+
+$('#done').on('click', () => {
+  window.location.replace("")
+})
