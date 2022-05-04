@@ -6,6 +6,7 @@ use App\Models\Truck;
 use App\Models\User;
 use App\Models\Image;
 use App\Models\Company;
+use App\Models\Service;
 use App\Http\Controllers\AddTruckController;
 use App\Http\Controllers\AddImageController;
 use App\Http\Controllers\AddServiceController;
