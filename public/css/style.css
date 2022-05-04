@@ -129,6 +129,10 @@ transform: translateX(-3px);
   justify-self: left;
 }
 
+.name-pic img {
+  width: 15vw;
+}
+
 .label { font-weight: bold; }
 
 

@@ -16,12 +16,13 @@ class FleetViewController extends Controller
         if ($truckId) {
 
             $truck = Truck::find($truckId);
-            // dd($truck);
+            // dd($truck->services);
 
             if ($truck->company_id == Auth::user()->company_id) {
                 // dd($truck);
               return view('truck', [
                 'truck' => $truck,
+                'services' => $truck->services,
                 ]);  
             } else {
                 abort(403);
