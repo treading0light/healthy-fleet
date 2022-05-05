@@ -36,7 +36,7 @@
 			</div>
 		</div>
 			
-		@if ($truck->services)
+		@if (isset($truck->services))
 
 		<table id="service-table">
 			<tr>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Truck;
 use App\Models\User;
 use App\Models\Company;
-use App\Models\Service;
+use App\Models\ServiceEvent;
 use Illuminate\Support\Facades\Auth;
 
 class FleetViewController extends Controller
