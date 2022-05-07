@@ -1,3 +1,4 @@
+
 * { margin: 0px; padding: 0px; font-size: 1.1em; }
 
 body { background-color: #bebec4; }
@@ -16,6 +17,10 @@ body { background-color: #bebec4; }
   justify-content: safe center;
   align-items: center;
   gap: 10px;
+}
+
+.flex-space {
+  justify-content: space-between;
 }
 
 #header_flex {

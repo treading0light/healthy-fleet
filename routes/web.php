@@ -12,6 +12,7 @@ use App\Http\Controllers\AddImageController;
 use App\Http\Controllers\AddServiceController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FleetViewController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth']);
+Route::get('/home', [HomeController::class, 'render'])->middleware(['auth'])->name('home');
 
 Route::get('/fleet/{truckId?}', [FleetViewController::class, 'render'])->middleware(['auth'])
 ->name('fleet');
