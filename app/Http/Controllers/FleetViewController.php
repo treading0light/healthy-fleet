@@ -12,31 +12,87 @@ use Illuminate\Support\Facades\Auth;
 class FleetViewController extends Controller
 {
     public function render($truckId=null) {
+        // if truckId is included in request, return single unit view
+        // else return fleet overview
 
         if ($truckId) {
 
+            // get truck that matches request id
             $truck = Truck::find($truckId);
-            // dd($truck->services);
 
-            if ($truck->company_id == Auth::user()->company_id) {
-                // dd($truck);
-              return view('truck', [
-                'truck' => $truck,
-                'services' => $truck->services,
-                ]);  
-            } else {
+
+            // abort if user does not match requested data
+            if ($truck->company_id != Auth::user()->company_id) {
+
                 abort(403);
+            } else {
+
+                $services = $truck->services;
+                // dd($truck->services);
+
+                if ($services->isNotEmpty()) {
+
+                    foreach ($services as $service) {
+
+                    // calculate miles remaining until service due
+                    $mileage = $service->mileage_due - $truck->mileage;
+
+                    // create assoc to be ordered by mileage
+                    $orderedServices[$mileage] = $service;
+                    }
+
+                    // sort services
+                    
+                    ksort($orderedServices);
+                    // dd($orderedServices);
+
+                    return view('truck', [
+                    'truck' => $truck,
+                    'services' => $orderedServices,
+                    ]);
+
+                } else {
+
+                    return view('truck', [
+                        'truck' => $truck,
+                    ]);
+                }
+            }
+            
+            
+        } else {
+            // return fleet overview
+
+            $trucks = Truck::oldest('name')
+            ->where('company_id', '=', Auth::user()->company_id)
+            ->with('department')
+            ->get();
+
+            foreach ($trucks as $truck) {
+                if ($truck->services->isNotEmpty()) {
+
+                    foreach ($truck->services as $service) {
+                        $mileage = $service->mileage_due - $truck->mileage;
+
+                        $calculatedMileage[] = $mileage;
+                    }
+
+                    asort($calculatedMileage);
+
+                    $nextService[$truck->id] = $calculatedMileage[0];
+
+                } else {
+                    $nextService[$truck->id] = 'None';
+                }
+
+                
+                
             }
 
-            
-
-        } else {
 
             return view('fleet', [
-                'trucks' => Truck::oldest('name')
-                ->where('company_id', '=', Auth::user()->company_id)
-                ->with('department')
-                ->get()
+                'trucks' => $trucks,
+                'nextService' => $nextService,
             ]);
         }
     }

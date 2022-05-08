@@ -42,7 +42,7 @@
 
         <div class="service">
           <p class="label">Next Service</p>
-          <p>600 mi.</p>
+          <p>{{ $nextService[$truck->id] }}</p>
         </div>
 
         <div class="button">

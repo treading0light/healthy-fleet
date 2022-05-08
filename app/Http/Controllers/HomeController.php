@@ -23,23 +23,32 @@ class HomeController extends Controller
 
         // calculate service mileage to get remaining miles until due
         // make assoc array with calculated mileage as key and service collection as value
-        foreach ($services as $service) {
-            $mileage = $service->mileage_due - $service->truck->mileage;
 
-            $orderedServices[$mileage] = $service;
-        }
+        if ($services->isNotEmpty()) {
+            foreach ($services as $service) {
+                $mileage = $service->mileage_due - $service->truck->mileage;
 
-        // order by miles remaining
-        ksort($orderedServices);
+                $orderedServices[$mileage] = $service;
+            }
 
-        // grab only the first 3 services
-        $nextServices = array_slice($orderedServices, 0, 3);
+            // order by miles remaining
+            ksort($orderedServices);
 
+            // grab only the first 3 services
+            $nextServices = array_slice($orderedServices, 0, 3);
 
-        return view('home', [
+            return view('home', [
             'truckCount' => $truckCount,
             'services' => $nextServices
-        ]);
+            ]);
+        } else {
+            return view('home', [
+                'truckCount' => $truckCount,
+            ]);
+        }
+
+
+        
 
     }
 }

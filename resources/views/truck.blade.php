@@ -43,7 +43,7 @@
 				<th>Name:</th>
 				<th>Due in:</th>
 			</tr>
-			@foreach ($truck->services as $service)
+			@foreach ($services as $service)
 
 				@if ($service->status = 'open')
 				<tr class="open">
