@@ -8,7 +8,7 @@
 
 
 
-<body>
+<body class="bg-slate-300">
 
   @include('layouts.header')
 
@@ -16,23 +16,28 @@
 
   <main>
 
-    <div id="fleet" class="flex-col">
+    <div id="fleet" class="flex flex-col w-full gap-4 items-center text-2xl">
 
     @foreach ($trucks as $truck)
 
       @if (isset($truck->department))
-      <div class="truck_bar  {{ $truck->department->name }}">
+      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 flex justify-around items-center bg-slate-400 {{ $truck->department->name }}">
       @else
-      <div class="truck_bar">
+      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 flex justify-around items-center bg-slate-400">
       @endif
 
-        <div class="name-pic">
-          <p class="label">{{ ucfirst($truck->name) }}</p>
-          <img src="{{ asset($truck->main_photo) }}">
+        <div class="flex flex-col w-1/6 my-2">
+          <p class="font-bold">{{ ucfirst($truck->name) }}</p>
+          <img 
+            src="{{ asset($truck->main_photo) }}"
+            class="w-fit" 
+          >
+          
+          
         </div>
 
         <div class="department">
-          <p class="label">Department</p>
+          <p class="bold">Department</p>
           @if (isset($truck->department))
           <p>{{ $truck->department->name }}</p>
           @else
@@ -41,13 +46,14 @@
         </div>
 
         <div class="service">
-          <p class="label">Next Service</p>
-          <p>{{ $nextService[$truck->id] }}</p>
+          <p class="bold">Next Service</p>
+          <p>{{ $nextService[$truck->id] }} miles.</p>
         </div>
 
-        <div class="button">
-          <a href="/fleet/{{ $truck->id }}">View</a>
+        <div class="button content-center">
+          <a class="font-semibold text-center" href="/fleet/{{ $truck->id }}">View</a>
         </div>
+
       </div>
 
       <hr>

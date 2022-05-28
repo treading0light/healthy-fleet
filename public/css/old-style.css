@@ -1,69 +1,89 @@
+
 * { margin: 0px; padding: 0px; font-size: 1.1em; }
-main, nav { display: block; }
 
-body {
-  background-color: #bebec4;
+body { background-color: #bebec4; }
 
+.flex-col {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: safe center;
+  align-items: center;
+  gap: 10px;
 }
 
-header {
+.flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: safe center;
+  align-items: center;
+  gap: 10px;
+}
+
+.flex-space {
+  justify-content: space-between;
+}
+
+#header_flex {
+  width: 100%;
   display: flex;
   height: 100px;
-  background-color: #9f263c;
 }
 
-header h2 {
-  font-size: 2.5em;
-  margin: auto;
-  margin-top: 5px;
+#user_menu {
+  /*float: right;*/
+  align-self: center;
+  margin-right: 20px;
+  cursor: pointer;
+  position: static;
+}
 
+#user_menu li {
+  display: block;
+  position: absolute;
+  top: 200px;
+}
+
+.off {
+  display: none;
+}
+
+
+#logo img {
+  width: 18%;
+  /*height: 100%;*/
+  justify-self: flex-start;
 }
 
 main {
   width: 100%;
   height: 80%;
   /*overflow: auto;*/
-
 }
 
 nav {
   width: 100%;
   background-color: #bebec4;
-  border: black solid 1px;
-  position: static;
-  top: 0;
-  overflow: hidden;
+
+  /*none|h-offset v-offset blur spread color |inset|initial|inherit*/
+  box-shadow: 0 5px 5px -5px ;
 }
 
 nav ul {
+  width: 70%;
+  margin: auto;
   display: flex;
   justify-content: center;
+  gap: 5vw;
+  list-style-type: none;
+  padding: 10px;
 }
 
-nav li {
-  margin: 10px 30px;
-
+.active_tab {
+  box-shadow: 0 8px 3px -5px #1e6070;
 }
-
-header h1 {
-  font-size: 2.5em;
-  margin-top: 5px;
-}
-
-/*#logo {
-  width: 30%;
-  height: 100%;
-  background-color: dimgray;
-  float: left;
-}*/
 
 h2 {
   font-size: 1.5em;
-}
-
-ul {
-  list-style-type: none;
-  padding: 10px;
 }
 
 hr { width: 85%; margin: auto; }
@@ -73,94 +93,183 @@ a {
   color: black;
 }
 
-img, h3 { padding: 15px; }
+img { margin: 15px; }
 
-#logo {
-  /*width: 18%;*/
-  float: left;
-  margin, padding: 0;
-}
 
 .button {
 color: #ffffff;
-background-color: #9f263c;
+background-color: #1e6070;
 border: 1px solid #000;
 border-radius: 4px;
 padding: 5px 15px;
+width: fit-content;
 cursor: pointer;
-width: 20px;
-height:32px;
-font-size:14px;
+max-height: 40px;
+font-size:1em;
+text-align: center;
 transition: all 0.2s ease-in-out;
 }
-
 .button:hover {
-box-shadow: 1px 1px #44131370, 2px 2px #44131370, 3px 3px #44131370;
+box-shadow: 1px 1px #12323c, 2px 2px #12323c, 3px 3px #12323c;
 transform: translateX(-3px);
 }
 
-
-.truck_block img { width: 300px; float: left;}
-
-.truck_block .button {
-  clear: both;
+.button a {
+  color: #ffffff;
 }
 
+.truck_bar {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.name-pic {
+  width: fit-content;
+  margin-left: 10px;
+}
+
+.name-pic h3 {
+  justify-self: left;
+}
+
+.name-pic img {
+  width: 15vw;
+}
+
+.label { font-weight: bold; }
+
+
+/*UNIT VIEW*/
+
+
+#truck-main * {
+  margin-bottom: 20px;
+}
 
 .truck_block {
-  width: 70%;
-  /*position: relative;*/
-  margin: auto;
-  margin-top: 30px;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
-.right { float: right; }
-.left { float: left; }
+#service-table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-#redundant {
-  position: relative;
-  float: left;
-  width: 45%;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  /*background-color: rosybrown;*/
+#service-table th {
+  text-align: left;
+  padding: 5px 0px;
+}
+
+#service-table td {
+  padding: 5px 0px;
+  font-size: 1.2em;
+}
+
+#service-table:nth-child(odd) tr {
+  /*border: inset black 1px;*/
+  background-color: #646472;
+}
+
+#service-table .button {
+  width: fit-content;
+}
+/*
+#service-table:nth-child(odd) {
+  border-style: outset;
+}*/
+
+
+
+/*.truck_block {
+  display: grid;
+  text-transform: capitalize;
+  width: 70%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: .25fr 1fr .25fr .25fr;
+}
+
+
+.truck_name { 
+grid-column: 1 / 2;
+grid-row: 1 / 2;
+}
+
+.truck_img {
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
+  justify-self: stretch;
+  max-width: 90%;
+}
+.truck_btn {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+  justify-self: center;
+  align-self: center;
+}*/
+
+.truck_img {
+  width: 25vw;
 }
 
 .truck_table {
-  float: left;
-  /*background-color: burlywood;*/
-  font-size: .7em;
-  text-transform: capitalize;
 
+  grid-column: 3 / 5;
+  grid-row: 2 / 3;
+  /*height: 50%;*/
+  width: 50%;
 }
 
-.truck_bio {
-  display: flex;
-  width: 80%;
-  margin: auto;
-  text-transform: capitalize;
-
+.truck_table tr {
+  font-size: .9em;
 }
 
-.truck_bio img {
-  /*float: left;*/
+/*#service-bar {
+  width: 100%;
+}*/
+
+#service-bar:first-child {
+  justify-self: start;
 }
 
-#bio_table {
-  float: right;
+#service-bar:last-child {
+  justify-self: end;
 }
 
-@media screen and (max-width: 870px) {
-  /*#redundant { clear: both; }*/
-  .truck_table, #bio_table { font-size: .6em;}
-  .truck_block img, #bio_table img { width: 150px; }
+.service-card {
+  justify-content: space-between;
 }
 
-@media screen and (max-width: 700px) {
-  .truck_table { display: none; }
-  
-  .truck_block table { width: 1.5em; }
+#doodle {
+  justify-self: flex-start;
 }
 
 
+
+@media only screen and (max-width: 900px) {
+  #logo img {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  p, h2,  {
+    font-size: .8em;
+  }
+
+  #logo img {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  p {
+    font-size: .6em;
+  }
+
+  #logo img {
+    width: 50%;
+  }
+}

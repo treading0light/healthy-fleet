@@ -13,15 +13,15 @@
 
   <main>
 
-    <div id="dashboard" class="flex-row flex-space">
+    <div id="dashboard" class="flex justify-center gap-60 text-2xl lg:flex-col">
 
-      <div class="flex-col">
-        <h3>You have {{ $truckCount }} vehicles in your fleet</h3>
+      <div class="flex flex-col gap-5">
+        <h3 class="font-bold">You have {{ $truckCount }} vehicles in your fleet</h3>
         <div class="button"><a href="{{ url('/setup/truck') }}">Add new vehicle</a></div>  
       </div>
 
       <div>
-        <h3>Next few services</h3>
+        <h3 class="font-bold">Next few services</h3>
         <table id="service-table">
           @foreach ($services as $service)
           <tr>

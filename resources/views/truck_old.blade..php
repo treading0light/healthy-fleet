@@ -19,7 +19,7 @@
 
 		<hr>
 
-		<div id="service-bar" class="flex-row w-12 h-12 rounded-xl">
+		<div id="service-bar" class="flex-row w-12 h-12">
 			<h2 id="doodle">Services:</h2>
 
 

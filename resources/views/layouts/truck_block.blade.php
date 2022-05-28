@@ -1,10 +1,10 @@
-<div class='truck_block flex-row' id="{{ $truck->id }}">
+<div class='flex' id="{{ $truck->id }}">
         
         <div id="name-pic" class="flex-col">
 
             <h3 class="truck_name">{{ ucfirst($truck->name) }}</h3>
 
-            <img class="truck_img" src="{{asset($truck->main_photo)}}">
+            <img class="w-1/2" src="{{asset($truck->main_photo)}}">
 
             <div class="button truck_btn">
             <a href="add_images/{{ $truck->name }}">Add Images</a>
@@ -12,7 +12,7 @@
 
         </div>
         
-        <table class="truck_table">
+        <table class="">
 
             @if (isset($truck->department_id))
             <tr>
