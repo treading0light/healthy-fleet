@@ -32,6 +32,7 @@
         @endforeach
         @else
         <h3 class="text-2xl">None</h3>
+        @endif
 
       </table>
 
