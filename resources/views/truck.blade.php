@@ -8,19 +8,17 @@
 
 </head>
 
-<body>
+<body class="bg-slate-300">
 
-	<main id="truck-main">
+	<main id="truck-main" class="bg-slate-400">
 
 		@include('layouts.header')
 		@include('layouts.nav')
 
 		@include('layouts.truck_block')
 
-		<hr>
-
-		<div id="service-bar" class="flex-row w-12 h-12 rounded-xl">
-			<h2 id="doodle">Services:</h2>
+		<div id="service-bar" class="flex rounded-xl items-center justify-center gap-5 mt-10">
+			<h2 class=" text-2xl">Services:</h2>
 
 
 			<div class="button">
@@ -38,26 +36,20 @@
 			
 		@if (isset($services))
 
-		<table id="service-table">
+		<table id="service-table" class="text-2xl m-auto mt-10 w-4/5 text-center">
 			<tr>
 				<th>Name:</th>
 				<th>Due in:</th>
 			</tr>
 			@foreach ($services as $service)
 
-				@if ($service->status = 'open')
-				<tr class="open">
+				<!-- use service->status as classname for sorting purposes -->
+				<tr class="{{ $service->status }}">
 					<td>{{ $service->name }}</td>
 					<td>{{ $service->mileage_due - $truck->mileage}} miles</td>
-					<td><div class="button">View/Edit</div></td>
+					<td><div class="button text-sm">View/Edit</div></td>
 				</tr>
 
-				@else
-				<tr class="closed">
-					<td>{{ $service->name }}</td>
-					<td>{{ $service->mileage_due - $truck->mileage}} miles</td>
-				</tr>
-				@endif
 			@endforeach
 
 		</table>

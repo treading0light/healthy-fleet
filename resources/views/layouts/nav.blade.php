@@ -1,4 +1,4 @@
-<nav class="min-w-screen mb-10">
+<nav class="min-w-screen mb-10 bg-slate-300">
 
   <ul class="flex justify-center gap-10">
     
