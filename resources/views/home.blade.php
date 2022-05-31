@@ -21,6 +21,7 @@
     <div class="w-1/3 bg-slate-400 p-20 rounded-2xl">
       <h3 class="font-bold">Next few services</h3>
       <table id="service-table" class=" text-center overflow-x-auto">
+        @if (isset($services))
         @foreach ($services as $service)
         <tr>
           <td>{{ $service->truck->name }} </td>
@@ -29,6 +30,8 @@
           <td><div class="button"><a href="#">View</a></div></td>
         </tr>
         @endforeach
+        @else
+        <h3 class="text-2xl">None</h3>
 
       </table>
 
