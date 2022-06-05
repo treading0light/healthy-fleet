@@ -97,7 +97,6 @@ class EditTruckController extends Controller
 
                 'name' => ['required', 'max:25',
                 Rule::unique('trucks')
-                ->ignore($truck->name)
                 ->where(fn ($query) => $query
                     ->where('company_id', '=', Auth::user()->company_id))
                 ],
