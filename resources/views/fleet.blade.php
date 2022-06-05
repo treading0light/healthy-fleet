@@ -21,7 +21,7 @@
     @foreach ($trucks as $truck)
 
       @if (isset($truck->department))
-      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 flex justify-around items-center bg-slate-400 {{ $truck->department->name }}">
+      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 rounded-2xl flex justify-around items-center bg-slate-400 {{ $truck->department->name }}">
       @else
       <div id="truck-bar-{{ $truck->id }}" class="w-4/5 flex justify-around items-center bg-slate-400">
       @endif
@@ -50,9 +50,9 @@
           <p>{{ $nextService[$truck->id] }} miles.</p>
         </div>
 
-        <div class="button content-center">
-          <a class="font-semibold text-center" href="/fleet/{{ $truck->id }}">View</a>
-        </div>
+        
+        <a class="button text-base font-semibold text-center" href="/fleet/{{ $truck->id }}">View</a>
+        
 
       </div>
 

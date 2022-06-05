@@ -44,7 +44,7 @@
             
         </table>
 
-            <a href="#" class="button">Edit</a>
+            <a href="{{ url('/fleet/edit/'.$truck->id) }}" class="button">Edit</a>
             
         </div>
         

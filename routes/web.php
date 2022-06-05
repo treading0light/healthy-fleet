@@ -13,6 +13,7 @@ use App\Http\Controllers\AddServiceController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FleetViewController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EditTruckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,13 @@ Route::get('/home', [HomeController::class, 'render'])->middleware(['auth'])->na
 
 Route::get('/fleet/{truckId?}', [FleetViewController::class, 'render'])->middleware(['auth'])
 ->name('fleet');
+
+Route::get('/fleet/edit/{truckId}', [EditTruckController::class, 'getEditForm'])
+->middleware(['auth'])
+->name('editTruck');
+
+Route::post('/fleet/edit/{truckId}', [EditTruckController::class, 'saveEdit'])
+->middleware(['auth']);
 
 Route::get('/add_images/{truck:name}', function (Truck $truck) {
     return view('add_images', [

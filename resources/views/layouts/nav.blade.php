@@ -1,4 +1,4 @@
-<nav class="min-w-screen mb-10 bg-slate-300">
+<nav class="min-w-screen mb-10 pb-5 bg-slate-300">
 
   <ul class="flex justify-center gap-10">
     
@@ -11,3 +11,7 @@
   </ul>
       
 </nav>
+
+<script>
+// make the sticky nav bar
+</script>

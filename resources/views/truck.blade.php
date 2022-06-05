@@ -10,10 +10,11 @@
 
 <body class="bg-slate-300">
 
-	<main id="truck-main" class="bg-slate-400">
+	@include('layouts.header')
 
-		@include('layouts.header')
-		@include('layouts.nav')
+	@include('layouts.nav')
+
+	<main id="truck-main" class="w-11/12 p-5 bg-slate-400 m-auto rounded-2xl min-h-screen text-2xl flex flex-col items-center">
 
 		@include('layouts.truck_block')
 
@@ -21,17 +22,13 @@
 			<h2 class=" text-2xl">Services:</h2>
 
 
-			<div class="button">
-				<p>Completed</p>
-			</div>
+			<p class="button text-base">Completed</p>
 
-			<div class="button">
-				<p>Incomplete</p>
-			</div>
+			
+			<p class="button text-base">Incomplete</p>
+			
 
-			<div class="button">
-				<a href="{{ url('create_service') }}/{{ $truck->id }}">Add new service</a>
-			</div>
+			<a class="button text-base" href="{{ url('create_service') }}/{{ $truck->id }}">Add new service</a>
 		</div>
 			
 		@if (isset($services))

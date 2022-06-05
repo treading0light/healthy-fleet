@@ -4,52 +4,56 @@
     @include('layouts.head')
     <title>Make Service</title>
 </head>
-<body>
+<body class="bg-slate-300">
     @include('layouts.header')
 
     @include('layouts.nav')
 
-    <div id="form_container">
-        <div id="error">
-            @if($errors->any())
-            {!! implode('', $errors->all(':message')) !!}
-            @endif
-        </div>
+    <main class="w-11/12 bg-slate-400 m-auto rounded-2xl min-h-screen text-2xl flex flex-col items-center">
 
-        <div id="message">
-            @if(isset($_SESSION['message']))
-            {!! $_SESSION['message'] !!}
-            @endif
-        </div>
+        <div id="form_container" class="flex flex-col mt-10">
 
-        <form id="service_form" action="/create_service" method="POST" enctype="multipart/form-data" class="flex-col">
-            @csrf
+            <div id="error">
+                @if($errors->any())
+                {!! implode('', $errors->all(':message')) !!}
+                @endif
+            </div>
 
-            <input type="hidden" name="truck_id" value="{{ $truck }}">
+            <div id="message">
+                @if(isset($_SESSION['message']))
+                {!! $_SESSION['message'] !!}
+                @endif
+            </div>
 
-            <h3>Name: <input type="text" name="name"></h3>
+            <form id="service_form" action="/create_service" method="POST" enctype="multipart/form-data" class="flex flex-col gap-2 items-center">
+                @csrf
 
-            <h3>Frequency: <select name="frequency"></h3>
+                <input type="hidden" name="truck_id" value="{{ $truck }}">
 
-                <option value="once">once</option>
+                <h3>Name: <input type="text" name="name"></h3>
 
-                <option value="recurring">recurring</option>
+                <h3>Frequency: <select name="frequency"></h3>
 
-            </select>
+                    <option value="once">once</option>
 
-            <h3>repeat service every <input type="number" name="mileage_repeat">miles.</h3>
+                    <option value="recurring">recurring</option>
 
-            <h3>This service due in: <input type="number" name="mileage_due">miles.</h3>
+                </select>
 
-            <h3>Description: <textarea id="description" name="description" rows="5" cols="30"></textarea></h3>
+                <h3>repeat service every <input type="number" name="mileage_repeat">miles.</h3>
 
-            <button type="submit" class="button">Submit</button>
+                <h3>This service due in: <input type="number" name="mileage_due">miles.</h3>
+
+                <h3>Description: <textarea id="description" name="description" rows="5" cols="30"></textarea></h3>
+
+                <button type="submit" class="button">Submit</button>
+                
+            </form>
+
+
             
-        </form>
-
-
-        
-    </div>
+        </div>
+    </main>
 
     <script> 
     </script>
