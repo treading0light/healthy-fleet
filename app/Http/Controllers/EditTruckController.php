@@ -42,7 +42,7 @@ class EditTruckController extends Controller
         } else {
 
             try {
-                $attributes = $request->validate(Self::updateRules($request, $truck));
+                $attributes = $request->validate($this->updateRules($request, $truck));
             } catch (exception $e) {
                 return redirect()->back()->withError($e->getMessage());
             }
@@ -82,6 +82,7 @@ class EditTruckController extends Controller
 
     public function updateRules($request, $truck) {
         // validation rules, ignore name attribute if name is unchanged
+        // there seems to be a way of doing this using FormRequest...
         
         if ($request->name == $truck->name) {
             return [
