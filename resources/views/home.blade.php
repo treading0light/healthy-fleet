@@ -14,12 +14,18 @@
   <div id="dashboard" class="w-11/12 m-auto min-h-screen rounded-2xl
    bg-slate-400 flex flex-col items-center justify-center gap-10 text-2xl lg:flex-row lg:gap-30 lg:items-start lg:justify-evenly">
 
-    <div class="flex flex-col items-center gap-5 bg-slate-400 w-fit p-20 rounded-2xl">
+    <div class="flex flex-col items-center gap-5 w-fit p-20">
+
+      @if ($truckCount == 1)
+      <h3 class="font-bold">You have {{ $truckCount }} vehicle in your fleet</h3>
+      @else
       <h3 class="font-bold">You have {{ $truckCount }} vehicles in your fleet</h3>
+      @endif
+
       <div class="button"><a href="{{ url('/setup/truck') }}">Add new vehicle</a></div>  
     </div>
 
-    <div class="flex flex-col items-center gap-2 bg-slate-400 p-20 rounded-2xl">
+    <div class="flex flex-col items-center gap-2 p-20">
       <h3 class="font-bold">Next few services</h3>
       <table id="service-table" class=" text-center overflow-x-auto">
         @if (isset($services))

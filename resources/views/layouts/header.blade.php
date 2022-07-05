@@ -12,9 +12,11 @@
 
 	
 
-	<div id="user_menu" class="flex-col mr-4">
-		<h1 id="user">Hello {{ Auth::user()->name }}</h1>
-		<ul id="menu_content" class="flex-col off">
+	<div id="user_menu" class="flex-col mr-4 md:text-2xl">
+
+		<h1 id="user" class="w-full hover:cursor-pointer">Hello <span class="font-bold">{{ ucfirst(Auth::user()->name) }}</span></h1>
+
+		<ul id="menu_content" class="p-3 w-full rounded-2xl bg-slate-50 absolute off">
 			<li><form id="logout-form" action="{{ route('logout') }}" method="POST">
 
 			@csrf
@@ -28,7 +30,8 @@
 
 	<script>
 		$('#user').on('click', function() {
-			$(this).siblings('ul').toggleClass('off')
+			$(this).siblings('ul').toggleClass('off bg-slate-400')
+			// $(this).parent('#user_menu').toggleClass('bg-slate-400')
 		})
 
 		$('#logout').on('click', function(e) {

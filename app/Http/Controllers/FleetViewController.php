@@ -83,10 +83,7 @@ class FleetViewController extends Controller
 
                 } else {
                     $nextService[$truck->id] = 'None';
-                }
-
-                
-                
+                }                          
             }
 
 

@@ -16,14 +16,14 @@
 
   <main>
 
-    <div id="fleet" class="flex flex-col w-full gap-4 items-center text-2xl">
+    <div id="fleet" class="flex flex-col w-full gap-4 items-center md:text-2xl">
 
     @foreach ($trucks as $truck)
 
       @if (isset($truck->department))
-      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 rounded-2xl flex justify-around items-center bg-slate-400 {{ $truck->department->name }}">
+      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 rounded-2xl flex justify-around items-center bg-slate-400 lg:text-3xl {{ $truck->department->name }}">
       @else
-      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 flex justify-around items-center bg-slate-400">
+      <div id="truck-bar-{{ $truck->id }}" class="w-4/5 flex justify-around items-center bg-slate-400 lg:text-3xl">
       @endif
 
         <div class="flex flex-col w-1/6 my-2">
@@ -51,7 +51,7 @@
         </div>
 
         
-        <a class="button text-base font-semibold text-center" href="/fleet/{{ $truck->id }}">View</a>
+        <a class="button text-base p-5 font-semibold text-center" href="/fleet/{{ $truck->id }}">View</a>
         
 
       </div>

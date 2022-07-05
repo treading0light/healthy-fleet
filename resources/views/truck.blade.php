@@ -18,7 +18,7 @@
 
 		@include('layouts.truck_block')
 
-		<div id="service-bar" class="flex rounded-xl items-center justify-center gap-5 mt-10">
+		<div id="service-bar" class="flex flex-wrap rounded-xl items-center justify-center gap-5 mt-10">
 			<h2 class=" text-2xl">Services:</h2>
 
 
