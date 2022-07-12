@@ -26,13 +26,11 @@
                 <th>Current mileage:</th> <td>{{ $truck->mileage }}</td>
             </tr>
 
+            @if ($truck->mileage_update_method != 'off')
             <tr>
                 <th>Last mileage update:</th> <td>11/11/21</td>
             </tr>
-
-            <tr>
-                <th>Next service due:</th> <td>600 mi.</td>
-            </tr>
+            @endif
 
             <tr>
                 <th>Year:</th> <td>{{ $truck->year }}</td>

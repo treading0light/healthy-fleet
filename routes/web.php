@@ -14,6 +14,7 @@ use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FleetViewController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EditTruckController;
+use App\Http\Controllers\DemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,5 +68,7 @@ Route::get('/create_service/{truck}', [AddServiceController::class, 'getServiceF
 )->middleware(['auth'])->name('create_service');
 
 Route::post('/create_service', [AddServiceController::class, 'storeService'])->middleware(['auth']);
+
+Route::get('/demo', [DemoController::class, 'create']);
 
 require __DIR__.'/auth.php';

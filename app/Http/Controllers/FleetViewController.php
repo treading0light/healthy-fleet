@@ -68,21 +68,20 @@ class FleetViewController extends Controller
             ->with('department')
             ->get();
 
+
             foreach ($trucks as $truck) {
+
                 if ($truck->services->isNotEmpty()) {
 
-                    foreach ($truck->services as $service) {
-                        $mileage = $service->mileage_due - $truck->mileage;
+                    $services = $truck->services->sortBy('mileage_due');
 
-                        $calculatedMileage[] = $mileage;
-                    }
 
-                    asort($calculatedMileage);
+                    $nextService[$truck->id] = $services[0]->mileage_due - $truck->mileage;
 
-                    $nextService[$truck->id] = $calculatedMileage[0];
+
 
                 } else {
-                    $nextService[$truck->id] = 'None';
+                    $nextService[$truck->id] = 'Zero';
                 }                          
             }
 
