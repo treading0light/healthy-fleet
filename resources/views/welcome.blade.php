@@ -23,7 +23,7 @@
             </div>
 
             <div class="button">
-                <a href="#">Demo</a>
+                <a href="/demo">Demo</a>
             </div>
         </div>
     </main>

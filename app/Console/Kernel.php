@@ -18,6 +18,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 
         $schedule->command('updateMileage:daily')->daily();
+
+        $schedule->command('deleteDemoUsers:daily')->daily();
     }
 
     /**

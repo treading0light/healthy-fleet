@@ -28,7 +28,6 @@ class FleetViewController extends Controller
             } else {
 
                 $services = $truck->services;
-                // dd($truck->services);
 
                 if ($services->isNotEmpty()) {
 
@@ -44,7 +43,6 @@ class FleetViewController extends Controller
                     // sort services
                     
                     ksort($orderedServices);
-                    // dd($orderedServices);
 
                     return view('truck', [
                     'truck' => $truck,
@@ -71,14 +69,24 @@ class FleetViewController extends Controller
 
             foreach ($trucks as $truck) {
 
+                $orderedServices = [];
+
                 if ($truck->services->isNotEmpty()) {
 
-                    $services = $truck->services->sortBy('mileage_due');
+                    foreach ($truck->services as $service) {
 
+                    // calculate miles remaining until service due
+                    $mileage = $service->mileage_due - $truck->mileage;
 
-                    $nextService[$truck->id] = $services[0]->mileage_due - $truck->mileage;
+                    // create array to be ordered by mileage
+                    $orderedServices[] = $mileage;
+                    }
 
+                    // sort services
+                    
+                    sort($orderedServices);
 
+                    $nextService[$truck->id] = $orderedServices[0];
 
                 } else {
                     $nextService[$truck->id] = 'Zero';

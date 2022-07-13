@@ -16,13 +16,17 @@ class CreateTrucksTable extends Migration
         Schema::create('trucks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('year')->nullable()->length(4);
-            $table->string('make')->nullable();
-            $table->string('model')->nullable();
-            $table->integer('mileage')->nullable()->length(7);
-            $table->string('main_photo')->nullable();
+            $table->integer('year')->default(null)->length(4);
+            $table->string('make')->default('null');
+            $table->string('model')->default('null');
+            $table->integer('mileage')->default(null)->length(7);
+            $table->integer('average_mileage')->default(0);
+            $table->string('mileage_update_method')->default('off');
+            $table->timestamp('last_mileage_update')->nullable();
+            $table->string('main_photo')->default('images/default_truck.jpg');
             $table->foreignId('department_id')->nullable();
             $table->foreignId('company_id');
+
             $table->timestamps();
         });
     }    
