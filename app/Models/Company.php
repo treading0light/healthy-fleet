@@ -26,13 +26,15 @@ class Company extends Model
         parent::boot();
 
         static::deleting(function($company) {
-            foreach ($company->trucks() as $truck) {
-                $truck->services()->delete();
-            }
+
+            // foreach($company->trucks() as $truck) {
+            //     $truck->delete();
+            // }
 
             $company->users()->delete();
             $company->trucks()->delete();
             $company->departments()->delete();
+
         });
     }
 }

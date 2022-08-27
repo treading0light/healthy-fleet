@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 
 use App\Models\User;
 use App\Models\Company;
+use App\Models\Truck;
+use App\Models\Service;
 
 class DeleteDemoUsers extends Command
 {
@@ -44,6 +46,14 @@ class DeleteDemoUsers extends Command
             ->get();
 
         foreach ($users as $user) {
+            
+            $trucks = Truck::where('company_id', $user->company_id)
+            ->get();
+
+            foreach($trucks as $truck) {
+                $truck->services()->delete();
+            }
+            // $user->company()->trucks()->services()->delete();
             $user->company->delete();
         }
 

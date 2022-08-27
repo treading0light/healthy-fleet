@@ -33,4 +33,17 @@ class Truck extends Model
         return $this->hasMany(Service::class);
     }
 
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($truck) {
+
+            // $truck->services()->delete();
+            foreach ($truck->services() as $service) {
+                $service->delete();
+            }
+
+        });
+    }
 }
