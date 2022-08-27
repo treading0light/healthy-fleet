@@ -16,7 +16,7 @@
 		<h1 class="font-bold mt-5">Add a new vehicle</h1>
 
 
-		<div id="form_container" class="flex flex-col mt-5">
+		<div id="form-container" class="flex flex-col mt-5">
 
 			<div id="error" class="text-center m-auto text-red-600 mb-10">
 			@if($errors->any())
@@ -31,7 +31,7 @@
 			@endif
 			</div>
 
-			<form id="truck_form" action="/setup/truck" method="POST" enctype="multipart/form-data" class="flex flex-col gap-2 items-center">
+			<form id="truck-form" action="/setup/truck" method="POST" enctype="multipart/form-data" class="flex flex-col gap-2 items-center">
 	            @csrf
 	               
 	            <h3>Truck Name: <input type="text" id="name" name="name" /></h3>

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 
 use App\Models\User;
+use App\Models\Company;
 
 class DeleteDemoUsers extends Command
 {
@@ -39,13 +40,13 @@ class DeleteDemoUsers extends Command
      */
     public function handle()
     {
-        $users = User::all();
+        $users = User::where('status', 'demo')
+            ->get();
 
         foreach ($users as $user) {
-            if ($user->status === 'demo') {
-                $user->delete();
-            }
+            $user->company->delete();
         }
+
         return Command::SUCCESS;
     }
 }

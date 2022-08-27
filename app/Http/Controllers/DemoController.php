@@ -51,13 +51,18 @@ class DemoController extends Controller
         $properties = [
             'name' => 'user'.$ran,
             'email' => 'user'.$ran.'@gmail.com',
-            'status' => 'demo',
             'password' => 'password11',
             'company_id' => $companyId
 
         ];
 
-        return User::create($properties);
+        // user->status cannot be set in array above,
+        // reason unknown
+        $user = User::create($properties);
+        $user->status = 'demo';
+        $user->save();
+
+        return $user;
     }
 
     function makeDepartments($companyId) {

@@ -21,4 +21,18 @@ class Company extends Model
     public function departments() {
         return $this->hasMany(Department::class);
     }
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($company) {
+            foreach ($company->trucks() as $truck) {
+                $truck->services()->delete();
+            }
+
+            $company->users()->delete();
+            $company->trucks()->delete();
+            $company->departments()->delete();
+        });
+    }
 }

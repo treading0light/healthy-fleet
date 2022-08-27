@@ -45,7 +45,7 @@ $('#question').children('.button.no').on('click', function() {
 })
 
 // Hide messages and errors when an input field gains focus
-$('#setup').children('input').on('focus', function() {
+$('#truck-form').children('input').on('focus', function() {
   console.log('something is working')
   $('#error').addClass('off')
   $('#message').addClass('off')
