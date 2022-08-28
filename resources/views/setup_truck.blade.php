@@ -37,7 +37,7 @@
 
 	            	<div class="flex flex-col gap-2">
 	            		<h1 class="font-bold mb-2">Truck Details:</h1>
-	            		<h3>Truck Name: <input type="text" id="name" name="name" /></h3>
+	            		<h3>Truck Name: <input type="text" id="name" name="name" placeholder="required" /></h3>
 
 			            <h3>Year: <input type="text" id="year" name="year" /></h3>
 
