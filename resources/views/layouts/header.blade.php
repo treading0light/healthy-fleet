@@ -8,6 +8,11 @@
 
 	</div>
 
+	<div id="company_name" class="text-2xl">
+		<h2>{{ ucfirst(Auth::user()->company->name) }}</h2>
+		
+	</div>
+
 	
 
 	

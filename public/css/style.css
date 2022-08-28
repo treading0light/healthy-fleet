@@ -1,3 +1,7 @@
+* {
+  font-family: 'DM Sans', sans-serif;
+}
+
 .active_tab {
   box-shadow: 0 8px 3px -5px #1e6070;
 }
@@ -7,7 +11,7 @@ color: #ffffff;
 background-color: #1e6070;
 border: 1px solid #000;
 border-radius: 4px;
-padding: 5px 15px;
+padding: 8px 15px;
 width: fit-content;
 cursor: pointer;
 max-height: 40px;

@@ -41,7 +41,7 @@ class DemoController extends Controller
         $ran = (string) random_int(1000, 9999);
 
         return Company::create([
-            'name' => 'demo'.$ran
+            'name' => 'company'.$ran
         ]);
     }
 
