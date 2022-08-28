@@ -33,30 +33,52 @@
 
 			<form id="truck_form" action="/setup/truck" method="POST" enctype="multipart/form-data" class="flex flex-col gap-2 items-center">
 	            @csrf
-	               
-	            <h3>Truck Name: <input type="text" id="name" name="name" /></h3>
+	            <div class="flex flex-col gap-5 items-center lg:flex-row lg:justify-around lg:gap-10">
 
-	            <h3>Year: <input type="text" id="year" name="year" /></h3>
+	            	<div class="flex flex-col gap-2">
+	            		<h1 class="font-bold mb-2">Truck Details:</h1>
+	            		<h3>Truck Name: <input type="text" id="name" name="name" /></h3>
 
-	            <h3>Truck Make: <input type="text" id="make" name="make"/></h3>	
+			            <h3>Year: <input type="text" id="year" name="year" /></h3>
 
-	            <h3>Truck Model: <input type="text" id="model" name="model" /></h3>	
+			            <h3>Truck Make: <input type="text" id="make" name="make"/></h3>	
 
-	            <h3>Current Mileage: <input type="text" id="mileage" name="mileage" /></h3>	
+			            <h3>Truck Model: <input type="text" id="model" name="model" /></h3>	
 
-	            @if ($departments != '')
+			            <h3>Current Mileage: <input type="text" id="mileage" name="mileage" /></h3>	
+
+			            @if ($departments != '')
+			            
+			            <h3>Department: <select name="department_id" id="department_id">
+			                @foreach ($departments as $department)
+
+			                <option value="{{ $department->id }}">{{ $department->name }}</option>
+			                @endforeach
+			            </select></h3>
+
+			            @endif
+
+			            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+			            <h3>Upload Vehicle Photo: <input type="file" id="img" name="img" accept="image/*" /></h3>
+	            	</div>
+
+	            	<div class="flex flex-col gap-2 items-center">
+
+			        	<h1 class="font-bold">Mileage settings:</h1>
+
+			        	<h3>Mileage auto update:</h3>
+
+			        	<div class="flex gap-5">	        		
+				        	<h3>off <input type="radio" name="mileage_update_method" value="off"></h3>
+				        	<h3>average <input type="radio" name="mileage_update_method" value="average"></h3>
+			        	</div>
+			        	
+			        	<h3 class="mt-5">Est. average miles per day</h3>
+			        	<input type="number" name="average_mileage">
+			        </div>
+	            	
+	            </div>   
 	            
-	            <h3>Department: <select name="department_id" id="department_id">
-	                @foreach ($departments as $department)
-
-	                <option value="{{ $department->id }}">{{ $department->name }}</option>
-	                @endforeach
-	            </select></h3>
-
-	            @endif
-
-	            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-	            <h3>Upload Vehicle Photo: <input type="file" id="img" name="img" accept="image/*" /></h3>
 
 	            <button type="submit" class="button mt-5 text-base">Submit</button>
 	        </form>

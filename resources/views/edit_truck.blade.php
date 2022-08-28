@@ -52,6 +52,10 @@
 		            </select></h3>
 
 		            @endif
+
+		            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+		            <h3>Upload Vehicle Photo: <input type="file" id="img" name="img" accept="image/*" /></h3>
+		            
 		        </div>
 
 		        <div class="flex flex-col gap-2 items-center">
@@ -61,8 +65,8 @@
 		        	<h3>Mileage auto update:</h3>
 
 		        	<div class="flex gap-5">	        		
-			        	<h3>off<input type="radio" name="mileage_update_method" value="off"></h3>
-			        	<h3>average<input type="radio" name="mileage_update_method" value="average"></h3>
+			        	<h3>off <input type="radio" name="mileage_update_method" value="off"></h3>
+			        	<h3>average <input type="radio" name="mileage_update_method" value="average"></h3>
 		        	</div>
 		        	
 		        	<h3 class="mt-5">Est. average miles per day</h3>

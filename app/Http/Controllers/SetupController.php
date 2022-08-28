@@ -34,6 +34,8 @@ class setupController extends Controller {
                 'model' => ['max:20', 'nullable'],
                 'mileage' => ['max:7', 'nullable'],
                 'department_id' => '',
+                'mileage_update_method' => '',
+                'average_mileage' => ''
                 // 'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
         } catch (exception $e) {

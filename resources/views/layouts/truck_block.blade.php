@@ -6,9 +6,9 @@
 
             <img class="w-1/2" src="{{asset($truck->main_photo)}}">
 
-            <div class="button truck_btn">
+            <!-- <div class="button truck_btn">
             <a href="add_images/{{ $truck->name }}">Add Images</a>
-            </div>
+            </div> -->
 
         </div>
 

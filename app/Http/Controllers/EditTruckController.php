@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Truck;
 use App\Models\User;
 use App\Models\Company;
-use App\Models\ServiceEvent;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\File;
@@ -52,6 +52,7 @@ class EditTruckController extends Controller
             $data = $request->collect();
 
             $data = $data->slice(1);
+            $data->forget('MAX_FILE_SIZE');
 
             // only update record with new attributes and update message
             foreach ($data as $key => $value) {
@@ -61,6 +62,11 @@ class EditTruckController extends Controller
                     $truck[$key] = $value;
                     $message .= 'Successfully updated: '.$key.'<br>';
                 }
+            }
+
+            if ($request->file('img')) {
+                $message .= $this->addMainPhoto($request, $truck);
+
             }
 
             try {
@@ -111,4 +117,40 @@ class EditTruckController extends Controller
             ];
         }
     }
+
+    public function addMainPhoto(Request $request, $truck) {
+        // save image to server and save path to vehicle
+        try {
+            $imageName = time().'.'.$request->file('img')->getClientOriginalName();
+
+            $companyFolder = str_replace(' ', '_', Auth::user()->company->name);
+
+            $path = 'images/'.$companyFolder.'/';
+
+            // check if company folder already exists,
+            // make one if not
+            if(!File::isDirectory($path)){
+
+                File::makeDirectory($path, 0777, true, true);
+            };
+
+            $request->file('img')->move($path, $imageName);
+
+            $image = Image::create([
+                'url' => $path.$imageName,
+                'truck_id' => $truck->id,
+            ]);
+
+            $truck->update(['main_photo' => $image->url]);
+
+            return 'Successfully updated: main_photo <br>';
+            
+        } catch (exception $e) {
+            return e->getMessage();
+        }
+        
+
+
+    }
+
 }
