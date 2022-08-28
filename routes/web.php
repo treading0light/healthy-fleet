@@ -67,11 +67,13 @@ Route::post('/setup/truck', [SetupController::class, 'storeTruck']);
 Route::get('/create_service/{truckId}', [ServiceController::class, 'newServiceForm']
 )->middleware(['auth'])->name('create_service');
 
+Route::post('/create_service', [ServiceController::class, 'storeService'])->middleware(['auth']);
+
 Route::get('/update_service/{serviceId}', [ServiceController::class, 'updateServiceForm']
 )->middleware(['auth']);
 
-Route::post('/create_service', [ServiceController::class, 'storeService'])->middleware(['auth']);
-
+Route::post('/update_service/{serviceId}', [ServiceController::class, 'updateService']
+)->middleware(['auth']);
 
 Route::get('/demo', [DemoController::class, 'create']);
 

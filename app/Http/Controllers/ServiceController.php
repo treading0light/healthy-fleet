@@ -64,4 +64,59 @@ class ServiceController extends Controller
         return redirect(url('fleet/'.$truck->id));
     }
 
+    public function updateService(Request $request, $serviceId) {
+        $service = Service::find($serviceId);
+        $truck = Truck::find($service->truck_id);
+        $message = '';
+
+        if (Auth::user()->company_id != $service->company_id) {
+
+            abort(403);
+        } else {
+            try {
+                $attributes = $request->validate([
+                    'name' => ['max:25', 'nullable'],
+                    'frequency' => ['max:25', 'nullable'],
+                    'mileage_repeat' => ['nullable'],
+                    'mileage_due' => ['max:6', 'nullable'],
+                    'truck_id' => ['nullable'],
+                    'description' => ['nullable']
+                ]);
+            } catch (exception $e) {
+                return redirect()->back()->withError($e->getMessage());
+            }
+
+             // put each request attribute into the collection
+            // remove token from $data
+            $data = $request->collect();
+
+            $data = $data->slice(1);
+
+            $data['mileage_due'] = $data['mileage_due'] + $truck->mileage;
+
+            // only update record with new attributes and update message
+            foreach ($data as $key => $value) {
+
+                if ($value != $service[$key] && $value != '') {
+
+                    $service[$key] = $value;
+                    $message .= 'Successfully updated: '.$key.'<br>';
+                }
+
+
+            }
+
+            // save changes
+            try {
+                $service->save();
+            } catch (exception $e) {
+                return redirect()->back()->withError($e->getMessage());
+            }
+
+            $_SESSION['message'] = $message;
+
+            return $this->updateServiceForm($serviceId);
+        }
+    }
+
 }

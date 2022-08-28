@@ -36,7 +36,7 @@ class EditTruckController extends Controller
         $truck = Truck::find($truckId);
         $message = '';
 
-        if (Auth::user()->companyId != $truck->companyId) {
+        if (Auth::user()->company_id != $truck->company_id) {
 
             abort(403);
         } else {

@@ -31,13 +31,13 @@
 
         <div id="form_container" class="flex flex-col mt-10">
 
-            <div id="error">
+            <div id="error" class="text-center m-auto text-red-600 mb-10">
                 @if($errors->any())
                 {!! implode('', $errors->all(':message')) !!}
                 @endif
             </div>
 
-            <div id="message">
+            <div id="message" class="text-center m-auto text-green-600 mb-10">
                 @if(isset($_SESSION['message']))
                 {!! $_SESSION['message'] !!}
                 @endif
@@ -63,7 +63,7 @@
 
                 <h3 id="mileage_input">repeat service every <input type="number" name="mileage_repeat" value="{{ $service->mileage_repeat }}">miles.</h3>
 
-                <h3>This service due in: <input type="number" name="mileage_due" value="{{ $service->mileage_due }}">miles.</h3>
+                <h3>This service due in: <input type="number" name="mileage_due" value="{{ $service->mileage_due }}"> miles.</h3>
 
                 <h3>Description: <textarea id="description" name="description" rows="5" cols="30" value="{{ $service->description }}"></textarea></h3>
 
