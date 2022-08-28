@@ -26,10 +26,8 @@ class Company extends Model
         parent::boot();
 
         static::deleting(function($company) {
-
-            // foreach($company->trucks() as $truck) {
-            //     $truck->delete();
-            // }
+            // before deleting $company, delete related records
+            // $truck->services are deleted in DeleteDemoUsers artisan command
 
             $company->users()->delete();
             $company->trucks()->delete();

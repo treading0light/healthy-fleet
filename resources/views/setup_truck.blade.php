@@ -31,7 +31,7 @@
 			@endif
 			</div>
 
-			<form id="truck-form" action="/setup/truck" method="POST" enctype="multipart/form-data" class="flex flex-col gap-2 items-center">
+			<form id="truck_form" action="/setup/truck" method="POST" enctype="multipart/form-data" class="flex flex-col gap-2 items-center">
 	            @csrf
 	               
 	            <h3>Truck Name: <input type="text" id="name" name="name" /></h3>

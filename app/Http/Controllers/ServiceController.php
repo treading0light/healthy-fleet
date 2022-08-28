@@ -7,13 +7,31 @@ use App\Models\Truck;
 use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 
-class AddServiceController extends Controller
+class ServiceController extends Controller
 {
-    public function getServiceForm($truck) {
+    public function newServiceForm($truckId) {
 
-        return view('create_service', [
+        $truck = Truck::select('name', 'id', 'mileage')->where('id', $truckId)->first();
+
+        // dd($truck);
+
+        return view('service_form', [
         'truck' => $truck,
+        'form_action' => '/create_service'
         ]);
+    }
+
+    public function updateServiceForm($serviceId) {
+        $service = Service::find($serviceId);
+        $truck = Truck::select('name', 'id', 'mileage')->where('id', $service->truck_id)->first();
+        $formAction = '/update_service/'.$serviceId;
+
+        return view('service_form', [
+            'service' => $service,
+            'truck' => $truck,
+            'form_action' => $formAction
+        ]);
+
     }
 
     public function storeService(Request $request) {
@@ -45,4 +63,5 @@ class AddServiceController extends Controller
 
         return redirect(url('fleet/'.$truck->id));
     }
+
 }

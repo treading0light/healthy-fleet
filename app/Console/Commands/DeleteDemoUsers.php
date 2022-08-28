@@ -42,6 +42,8 @@ class DeleteDemoUsers extends Command
      */
     public function handle()
     {
+        // services must be deleted independently
+        
         $users = User::where('status', 'demo')
             ->get();
 
@@ -53,7 +55,7 @@ class DeleteDemoUsers extends Command
             foreach($trucks as $truck) {
                 $truck->services()->delete();
             }
-            // $user->company()->trucks()->services()->delete();
+
             $user->company->delete();
         }
 

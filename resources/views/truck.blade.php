@@ -33,7 +33,7 @@
 			
 		@if (isset($services))
 
-		<table id="service-table" class="text-2xl m-auto mt-10 w-4/5 text-center">
+		<table id="service-table" class="text-2xl m-auto mt-10 w-4/5 text-center table-auto">
 			<tr>
 				<th>Name:</th>
 				<th>Due in:</th>
@@ -44,7 +44,7 @@
 				<tr class="{{ $service->status }}">
 					<td>{{ $service->name }}</td>
 					<td>{{ $service->mileage_due - $truck->mileage}} miles</td>
-					<td><div class="button text-sm">View/Edit</div></td>
+					<td><div class="button text-sm"><a href="/update_service/{{ $service->id }}">View/Edit</a></div></td>
 				</tr>
 
 			@endforeach
