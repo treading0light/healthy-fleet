@@ -11,12 +11,12 @@
 
     @include('layouts.nav')
 
-	<main class="w-11/12 bg-slate-400 m-auto rounded-2xl min-h-screen text-2xl flex flex-col items-center" id="main">
+	<main class="w-11/12 bg-slate-400 m-auto rounded-2xl min-h-screen md:text-2xl flex flex-col items-center" id="main">
 
 		<h1 class="font-bold mt-5">Add a new vehicle</h1>
 
 
-		<div id="form-container" class="flex flex-col mt-5">
+		<div id="form-container" class="flex flex-col mt-5 text-center">
 
 			<div id="error" class="text-center m-auto text-red-600 mb-10">
 			@if($errors->any())
@@ -31,11 +31,11 @@
 			@endif
 			</div>
 
-			<form id="truck_form" action="/setup/truck" method="POST" enctype="multipart/form-data" class="flex flex-col gap-2 items-center">
+			<form id="truck_form" action="/setup/truck" method="POST" enctype="multipart/form-data">
 	            @csrf
-	            <div class="flex flex-col gap-5 items-center lg:flex-row lg:justify-around lg:gap-10">
+	            <div class="flex flex-col gap-5 items-center lg:flex-row lg:justify-center lg:gap-8">
 
-	            	<div class="flex flex-col gap-2">
+	            	<div class="flex flex-col gap-2 md:basis-1/2">
 	            		<h1 class="font-bold mb-2">Truck Details:</h1>
 	            		<h3>Truck Name: <input type="text" id="name" name="name" placeholder="required" /></h3>
 
@@ -59,10 +59,10 @@
 			            @endif
 
 			            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-			            <h3>Upload Vehicle Photo: <input type="file" id="img" name="img" accept="image/*" /></h3>
+			            <h3 class="mt-5 w-10/12">Upload Vehicle Photo: <input class="m-auto" type="file" id="img" name="img" accept="image/*" /></h3>
 	            	</div>
 
-	            	<div class="flex flex-col gap-2 items-center">
+	            	<div class="flex flex-col gap-2 items-center lg:basis-1/2">
 
 			        	<h1 class="font-bold">Mileage settings:</h1>
 

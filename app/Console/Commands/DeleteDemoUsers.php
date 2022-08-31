@@ -23,7 +23,7 @@ class DeleteDemoUsers extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Remove users flagged with "demo" and all related records';
 
     /**
      * Create a new command instance.

@@ -22,10 +22,10 @@
 			<h2 class=" text-2xl">Services:</h2>
 
 
-			<p class="button text-base">Completed</p>
+			<button onclick="show('.closed')" class="button text-base">Completed</button>
 
 			
-			<p class="button text-base">Incomplete</p>
+			<button onclick="show('.open')" class="button text-base">Incomplete</button>
 			
 
 			<a class="button text-base" href="{{ url('create_service') }}/{{ $truck->id }}">Add new service</a>
@@ -40,12 +40,12 @@
 			</tr>
 			@foreach ($services as $service)
 
-				<!-- use service->status as classname for sorting purposes -->
-				<tr class="{{ $service->status }}">
-					<td>{{ $service->name }}</td>
-					<td>{{ $service->mileage_due - $truck->mileage}} miles</td>
-					<td><div class="button text-sm"><a href="/update_service/{{ $service->id }}">View/Edit</a></div></td>
-				</tr>
+			<!-- use service->status as classname for sorting purposes -->
+			<tr class="service {{ $service->status }}">
+				<td>{{ $service->name }}</td>
+				<td>{{ $service->mileage_due - $truck->mileage}} miles</td>
+				<td><a class="button text-sm" href="/update_service/{{ $service->id }}">View/Edit</a></td>
+			</tr>
 
 			@endforeach
 
@@ -54,6 +54,16 @@
 		@endif
 
 	</main>
+
+	<script>
+		const show = (status) => {
+			$('#service-table').children('.service').not(status).addClass('off')
+			$('#service-table').children(status).removeClass('off')
+			console.log('did it')
+		}
+
+		show('.open')
+	</script>
 
 </body>
 </html>

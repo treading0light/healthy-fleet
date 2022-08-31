@@ -34,7 +34,7 @@
           <td class="px-2 py-5">{{ $service->truck->name }} </td>
           <td class="p-5">{{ $service->name }} </td>
           <td class="p-5">{{ $service->mileage_due - $service->truck->mileage}} miles </td>
-          <td><div class="button"><a href="#">View</a></div></td>
+          <td><div class="button"><a href="/update_service/{{ $service->id }}">View</a></div></td>
         </tr>
         @endforeach
         @else
