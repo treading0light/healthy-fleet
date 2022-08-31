@@ -37,6 +37,7 @@
 			<tr>
 				<th>Name:</th>
 				<th>Due in:</th>
+				
 			</tr>
 			@foreach ($services as $service)
 
@@ -57,9 +58,9 @@
 
 	<script>
 		const show = (status) => {
-			$('#service-table').children('.service').not(status).addClass('off')
-			$('#service-table').children(status).removeClass('off')
-			console.log('did it')
+			$('#service-table .service').not(status).addClass('off')
+			$('#service-table '+ status).removeClass('off')
+			console.log('did it ' + status)
 		}
 
 		show('.open')
