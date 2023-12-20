@@ -21,6 +21,8 @@ class HomeController extends Controller
         ->where('status', '=', 'open')
         ->with('truck')->get();
 
+        dd($services);
+
         // calculate service mileage to get remaining miles until due
         // make assoc array with calculated mileage as key and service collection as value
 

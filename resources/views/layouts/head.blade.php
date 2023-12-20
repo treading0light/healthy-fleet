@@ -3,6 +3,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"> -->
 <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+<script type="text/javascript" src="{{ asset('js/external.js') }}"></script>
 
 <!-- secure assets for prod env, non secure for local -->
 @if (env('APP_ENV')!='local')

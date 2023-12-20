@@ -44,6 +44,9 @@ Route::get('/fleet/edit/{truckId}', [EditTruckController::class, 'getEditForm'])
 Route::post('/fleet/edit/{truckId}', [EditTruckController::class, 'saveEdit'])
 ->middleware(['auth']);
 
+Route::post('/fleet/delete/{truckId}', [EditTruckController::class, 'deleteTruck'])
+->middleware(['auth']);
+
 Route::get('/add_images/{truck:name}', function (Truck $truck) {
     return view('add_images', [
         'truck' => $truck,

@@ -28,6 +28,16 @@ transform: translateX(-3px);
   color: #ffffff;
 }
 
+.delete-button {
+  background-color: #f50606;
+}
+
+.delete-button:disabled {
+  background-color: rgb(248, 151, 151);
+  transform: none;
+  box-shadow: none;
+}
+
 .off {
   display: none;
 }

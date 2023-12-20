@@ -2,7 +2,10 @@
 <html>
 <head>
 	@include('layouts.head')
+	@livewireStyles
+
 	<title>Edit {{ $truck->name }}</title>
+	<script></script>
 </head>
 <body class="bg-slate-300">
 
@@ -11,15 +14,20 @@
 
 	<main class="w-11/12 p-5 bg-slate-400 m-auto rounded-2xl min-h-screen text-2xl ">
 
-		@if($errors->any())
+		{{-- @if($errors->any())
 		<div id="error" class="text-center m-auto text-red-600 mb-5">
 		    {!! implode('', $errors->all(':message')) !!}
 		</div>
+		@endif --}}
+		@if(session('error'))
+		<div id="error" class="text-center m-auto text-red-600 mb-5">
+			{!! session('error') !!}
+		</div>
 		@endif
 
-		@if(isset($_SESSION['message']))
+		@if(session('message'))
 		<div id="message" class="text-center m-auto text-green-600 mb-5">
-			{!! $_SESSION['message'] !!}
+			{!! session('message') !!}
 		</div>
 		@endif
 
@@ -45,10 +53,12 @@
 		            @if ($departments != '')
 		            
 		            <h3>Department: <select name="department_id" id="department_id">
-		                @foreach ($departments as $department)
 
-		                <option value="{{ $department->id }}">{{ $department->name }}</option>
+		                @foreach ($departments as $department)
+		                <option value="{{ $department->id }}" {{ $truck->department_id == $department->id ? 'selected' : '' }}>
+							{{ $department->name }}</option>
 		                @endforeach
+
 		            </select></h3>
 
 		            @endif
@@ -75,12 +85,31 @@
 
             </div>
             
-            <button type="submit" class="button mt-10 m-auto text-base">Save</button>         
+            <button type="submit" class="button mt-10 m-auto text-base">Save</button>    
 
         </form>
-        
-		
+
+		<form id="truck_delete" action="{{ url('/fleet/delete/'.$truck->id) }}" method="POST" enctype="multipart/form-data" class="flex flex-col items-center">
+			@csrf
+			<button onclick="openDeleteModal(event)" class="button delete-button mt-10 m-auto text-base">Delete</button>
+			<x-confirm-delete-modal :truck="$truck"></x-confirm-delete-modal>
+		</form
 	</main>
+
+	<script>
+		const openDeleteModal = (event) => {
+			event.preventDefault()
+
+			let backdrop = document.getElementById('delete-modal-backdrop')
+			let modal = document.getElementById('delete-modal-panel')
+
+			backdrop.classList.remove('hidden')
+			modal.classList.remove('hidden')
+
+		}
+	</script>
+
+	@livewireScripts
 
 </body>
 </html>

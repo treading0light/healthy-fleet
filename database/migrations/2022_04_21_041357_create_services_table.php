@@ -20,8 +20,8 @@ class CreateServicesTable extends Migration
             $table->integer('mileage_repeat')->nullable();
             $table->integer('mileage_due');
             $table->string('status')->default('open');
-            $table->foreignId('truck_id');
-            $table->foreignId('company_id')->onDelete('cascade');
+            $table->foreignId('truck_id')->constrained()->onDelete('cascade');
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->text('description')->nullable();
             $table->timestamps();
         });

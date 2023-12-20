@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Company;
 use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\File;
 
@@ -83,6 +84,30 @@ class EditTruckController extends Controller
                 'truck' => $truck,
                 'departments' => $departments,
             ]);
+        }
+    }
+
+    public function deleteTruck(Request $request, $truckId) {
+        $truck = Truck::find($truckId);
+        $password = $request->input('password');
+
+        if (Auth::user()->company_id != $truck->company_id) {
+            dd(Auth::user());
+            abort(403);
+        }
+
+        
+        if (Hash::check($password, Auth::user()->password)) {
+            try {
+                Truck::find($truckId)->delete();
+                return redirect('/fleet')->with(['message' => 'Success. '.$truck->name.'has been removed from records.']);
+            } catch (exception $e) {
+                return redirect()->back()->with(['error' => $e->getMessage()]);
+            }
+            
+        } else {
+            // dd('password no match');
+            return redirect()->back()->with(['error' => 'Password does not match our records. Vehicle was not deleted.']);
         }
     }
 

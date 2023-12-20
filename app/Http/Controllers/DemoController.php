@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 use App\Models\Truck;
 use App\Models\Company;
@@ -51,7 +53,7 @@ class DemoController extends Controller
         $properties = [
             'name' => 'user'.$ran,
             'email' => 'user'.$ran.'@gmail.com',
-            'password' => 'password11',
+            'password' => Hash::make('password11'),
             'company_id' => $companyId
 
         ];

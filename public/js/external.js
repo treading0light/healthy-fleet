@@ -151,6 +151,18 @@ function grabData() {
   return data;
 }
 
+// const openDeleteModal = (event) => {
+//   event.preventDefault()
+
+//   let backdrop = document.getElementById('delete-modal-backdrop')
+//   let modal = document.getElementById('delete-modal-panel')
+
+//   backdrop.classList.remove('hidden')
+//   modal.classList.remove('hidden')
+
+// }
+
+
 
 
 

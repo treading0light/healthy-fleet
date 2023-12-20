@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->timestamps();
-            $table->foreignId('company_id');
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -24,8 +24,8 @@ class CreateTrucksTable extends Migration
             $table->string('mileage_update_method')->default('off')->nullable();
             $table->timestamp('last_mileage_update')->nullable();
             $table->string('main_photo')->default('images/default_truck.jpg');
-            $table->foreignId('department_id')->nullable();
-            $table->foreignId('company_id');
+            $table->foreignId('department_id')->nullable()->constrained();
+            $table->foreignId('company_id')->constrained();
 
             $table->timestamps();
         });
